@@ -30,16 +30,18 @@ a{text-decoration:none;color:inherit;transition:all .2s ease}
 
 /* Navegação */
 .nav{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:Georgia,serif;letter-spacing:.12em;font-size:20px;display:inline-block}
-.logo small{display:block;font:10px Arial;letter-spacing:.25em;color:var(--gold);margin-top:-3px}
+.nav-inner{height:80px;display:flex;align-items:center;justify-content:space-between}
+.logo-container{display:flex;align-items:center;gap:12px}
+.logo-img{height:48px;width:auto;object-fit:contain}
+.logo-text{font-family:Georgia,serif;letter-spacing:.12em;font-size:20px;display:inline-block}
+.logo-text small{display:block;font:10px Arial;letter-spacing:.25em;color:var(--gold);margin-top:-3px}
 .navlinks{display:flex;gap:25px;font-size:13px;color:var(--muted)}
 .navlinks a:hover{color:var(--brown)}
 .navbtn{padding:11px 17px;background:var(--brown);color:white;border-radius:999px;font-size:13px;font-weight:600}
 .navbtn:hover{background:var(--brown-hover)}
 
 /* Hero Header */
-.hero{min-height:670px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
+.hero{min-height:580px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
 background:radial-gradient(circle at 20% 20%,#fffdf9 0,#f7f2ea 45%,#eee4d7 100%)}
 .hero:after{content:"";position:absolute;inset:5%;border:1px solid rgba(176,138,88,.28);pointer-events:none}
 .eyebrow{font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;font-weight:bold}
@@ -58,15 +60,26 @@ section{padding:85px 0}
 .section-head h2{font-size:40px;margin:8px 0}
 .section-head p{color:var(--muted)}
 
-/* Ocasiões */
-.occasion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.occasion{background:var(--paper);border:1px solid var(--line);padding:30px;border-radius:20px;min-height:150px;transition:.25s ease}
-.occasion:hover,.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
-.occasion b{font-family:Georgia,serif;font-size:22px;font-weight:400;display:block;margin-bottom:6px}
-.occasion p{color:var(--muted);font-size:14px;margin:0}
+/* Seção Quem Somos */
+.about-section{background:var(--paper);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-photo{
+  height:480px;border-radius:24px;
+  background-image: url('wandresson-e-thais.jpg');
+  background-size:cover;background-position:center;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.about-badge{
+  display:inline-block;background:var(--cream);border:1px solid var(--gold);
+  color:var(--brown);padding:6px 14px;border-radius:999px;font-size:12px;
+  font-weight:bold;margin-bottom:15px;letter-spacing:.05em;
+}
+.about-content h2{font-size:38px;margin:10px 0 20px;line-height:1.2}
+.about-content p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:16px}
+.about-signature{margin-top:25px;padding-top:20px;border-top:1px solid var(--line);font-family:Georgia,serif;font-style:italic;color:var(--brown);font-size:18px}
 
 /* Produtos */
-.products{background:var(--paper)}
+.products{background:var(--cream)}
 .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-content:space-between}
 .photo{height:320px;display:grid;place-items:center;background:linear-gradient(135deg,#eadfce,#f8f3eb);color:#8d7b67;text-align:center;padding:30px;background-size:cover;background-position:center}
@@ -170,12 +183,13 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 @media(max-width:760px){
  .navlinks{display:none}
  .navbtn{padding:9px 14px;font-size:12px}
- .hero{min-height:550px}
+ .hero{min-height:500px}
  .hero:after{inset:3%}
  .hero p{font-size:15px}
  section{padding:60px 0}
  .section-head h2{font-size:32px}
- .occasion-grid,.product-grid,.steps,.feature,.modal-grid{grid-template-columns:1fr}
+ .product-grid,.steps,.feature,.modal-grid,.about-grid{grid-template-columns:1fr}
+ .about-photo{height:320px}
  .photo{height:250px}
  .feature .mock{height:280px}
  .feature h2{font-size:32px}
@@ -191,10 +205,14 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 
 <nav class="nav">
  <div class="container nav-inner">
-  <a class="logo" href="#">AMAZING BOX<small>CAICÓ • RN</small></a>
+  <div class="logo-container">
+   <!-- Logo em imagem (Substitua logo.png pela sua logo no GitHub se tiver) -->
+   <img src="logo.png" alt="Amazing Box Logo" class="logo-img" onerror="this.style.display='none'">
+   <a class="logo-text" href="#">AMAZING BOX<small>CAICÓ • RN</small></a>
+  </div>
   <div class="navlinks">
+   <a href="#quem-somos">Quem Somos</a>
    <a href="#boxes">Boxes</a>
-   <a href="#ocasioes">Ocasiões</a>
    <a href="#como">Como funciona</a>
    <a href="#faq">FAQ</a>
   </div>
@@ -206,38 +224,40 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  <div class="container">
   <div class="eyebrow">Presentes • Experiências • Afeto</div>
   <h1>Presentes que<br>viram memórias.</h1>
-  <p>Cestas de café da manhã e experiências especiais preparadas para transformar momentos simples em lembranças inesquecíveis.</p>
+  <p>Cestas de café da manhã e experiências especiais preparadas para transformar momentos simples em lembranças inesquecíveis em Caicó.</p>
   <div class="actions">
    <a class="primary" href="#boxes">Conheça nossas Boxes</a>
-   <a class="secondary" href="#ocasioes">Escolher por ocasião</a>
+   <a class="secondary" href="#quem-somos">Nossa História</a>
   </div>
  </div>
 </header>
 
-<section id="ocasioes">
+<!-- SEÇÃO QUEM SOMOS -->
+<section class="about-section" id="quem-somos">
  <div class="container">
-  <div class="section-head">
-   <div class="eyebrow">Encontre o presente</div>
-   <h2>Qual momento você quer transformar?</h2>
-   <p>Uma experiência pensada para cada tipo de surpresa.</p>
-  </div>
-  <div class="occasion-grid">
-   <div class="occasion"><b>♡ Amor</b><p>Para surpreender alguém especial.</p></div>
-   <div class="occasion"><b>✦ Aniversário</b><p>Comece o dia celebrando.</p></div>
-   <div class="occasion"><b>⌂ Família</b><p>Para compartilhar sabores e momentos.</p></div>
-   <div class="occasion"><b>❀ Datas especiais</b><p>Um carinho para tornar a data inesquecível.</p></div>
-   <div class="occasion"><b>✧ Conquistas</b><p>Para celebrar novas etapas.</p></div>
-   <div class="occasion"><b>☕ Só porque sim</b><p>Porque não é preciso esperar uma data.</p></div>
+  <div class="about-grid">
+   <div class="about-photo"></div>
+   <div class="about-content">
+    <div class="about-badge">✦ Mais de 1.000 cestas entregues em Caicó</div>
+    <h2>Quem somos nós</h2>
+    <p>A <strong>Amazing Box</strong> nasceu para transformar presentes em experiências e momentos especiais em memórias.</p>
+    <p>Cada box é preparada com carinho, cuidado e extrema atenção aos detalhes, porque acreditamos que presentear é uma das formas mais bonitas de demonstrar sentimentos.</p>
+    <p>Por trás de cada laço, cada item selecionado e cada entrega especial, somos nós cuidando de tudo para você:</p>
+    <div class="about-signature">
+     — Wandresson & Thaís ❤️
+    </div>
+   </div>
   </div>
  </div>
 </section>
 
+<!-- SEÇÃO PRODUTOS / BOXES -->
 <section class="products" id="boxes">
  <div class="container">
   <div class="section-head">
    <div class="eyebrow">Nossa coleção</div>
    <h2>Escolha sua experiência</h2>
-   <p>Dois primeiros sabores da nova Amazing Box. Clique em ver detalhes para ver todos os itens inclusos.</p>
+   <p>Abaixo estão as opções para surpreender. Clique em "Ver Detalhes" para conferir a lista completa de itens de cada cesta.</p>
   </div>
   <div class="product-grid">
 
@@ -452,11 +472,11 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 <footer>
  <div class="container footer">
   <div>
-   <div class="logo">AMAZING BOX<small>CAICÓ • RN</small></div>
+   <div class="logo-text">AMAZING BOX<small>CAICÓ • RN</small></div>
    <p>Presentes que transformam momentos em memórias.</p>
   </div>
   <div>
-   <p><a href="#boxes">Cestas</a> • <a href="#ocasioes">Ocasiões</a> • <a href="#como">Como funciona</a> • <a href="#faq">FAQ</a></p>
+   <p><a href="#quem-somos">Quem Somos</a> • <a href="#boxes">Boxes</a> • <a href="#como">Como funciona</a> • <a href="#faq">FAQ</a></p>
    <p>© 2026 Amazing Box. Todos os direitos reservados.</p>
   </div>
  </div>
@@ -466,7 +486,6 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  💬 Falar no WhatsApp
 </a>
 
-<!-- JavaScript para controle dos Modais e Troca de Imagens -->
 <script>
 function openModal(id) {
   document.getElementById(id).classList.add('active');
