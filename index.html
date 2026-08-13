@@ -44,7 +44,8 @@ a{text-decoration:none;color:inherit;transition:all .2s ease}
 .hero{min-height:620px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
 background:radial-gradient(circle at 20% 20%,#fffdf9 0,#f7f2ea 45%,#eee4d7 100%);padding:50px 0}
 .hero:after{content:"";position:absolute;inset:5%;border:1px solid rgba(176,138,88,.28);pointer-events:none}
-.hero-logo{max-width:180px;width:100%;height:auto;margin:0 auto 15px;display:block;object-fit:contain}
+/* LOGO MAIOR NO TOPO */
+.hero-logo{max-width:280px;width:100%;height:auto;margin:0 auto 20px;display:block;object-fit:contain}
 .eyebrow{font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;font-weight:bold}
 .hero h1{font-size:clamp(44px,7vw,78px);margin:15px 0 10px;line-height:.98}
 .hero p{max-width:620px;margin:0 auto 28px;color:var(--muted);font-size:17px}
@@ -64,10 +65,12 @@ section{padding:85px 0}
 /* Seção Quem Somos */
 .about-section{background:var(--paper);border-bottom:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+/* FOTO AJUSTADA PARA NÃO CORTAR CABEÇA */
 .about-photo{
   height:480px;border-radius:24px;
   background-image: url('wandresson-e-thais.jpg');
-  background-size:cover;background-position:center;
+  background-size:cover;
+  background-position: center 15%; /* Foca o enquadramento no topo/rostos */
   border:1px solid var(--line);box-shadow:var(--shadow);
 }
 .about-badge{
@@ -186,12 +189,12 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  .navbtn{padding:9px 14px;font-size:12px}
  .hero{min-height:500px}
  .hero:after{inset:3%}
- .hero-logo{max-width:140px}
+ .hero-logo{max-width:200px}
  .hero p{font-size:15px}
  section{padding:60px 0}
  .section-head h2{font-size:32px}
  .product-grid,.steps,.feature,.modal-grid,.about-grid{grid-template-columns:1fr}
- .about-photo{height:320px}
+ .about-photo{height:380px}
  .photo{height:250px}
  .feature .mock{height:280px}
  .feature h2{font-size:32px}
@@ -223,7 +226,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 
 <header class="hero">
  <div class="container">
-  <!-- LOGO NO TOPO EM DESTAQUE -->
+  <!-- LOGO EM DESTAQUE MAIOR -->
   <img src="logo.png" alt="Amazing Box Logo" class="hero-logo" onerror="this.style.display='none'">
   <div class="eyebrow">Presentes • Experiências • Afeto</div>
   <h1>Presentes que<br>viram memórias.</h1>
