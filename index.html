@@ -32,7 +32,7 @@ a{text-decoration:none;color:inherit;transition:all .2s ease}
 .nav{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav-inner{height:80px;display:flex;align-items:center;justify-content:space-between}
 .logo-container{display:flex;align-items:center;gap:12px}
-.logo-img{height:48px;width:auto;object-fit:contain}
+.logo-img-nav{height:42px;width:auto;object-fit:contain}
 .logo-text{font-family:Georgia,serif;letter-spacing:.12em;font-size:20px;display:inline-block}
 .logo-text small{display:block;font:10px Arial;letter-spacing:.25em;color:var(--gold);margin-top:-3px}
 .navlinks{display:flex;gap:25px;font-size:13px;color:var(--muted)}
@@ -41,11 +41,12 @@ a{text-decoration:none;color:inherit;transition:all .2s ease}
 .navbtn:hover{background:var(--brown-hover)}
 
 /* Hero Header */
-.hero{min-height:580px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
-background:radial-gradient(circle at 20% 20%,#fffdf9 0,#f7f2ea 45%,#eee4d7 100%)}
+.hero{min-height:620px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
+background:radial-gradient(circle at 20% 20%,#fffdf9 0,#f7f2ea 45%,#eee4d7 100%);padding:50px 0}
 .hero:after{content:"";position:absolute;inset:5%;border:1px solid rgba(176,138,88,.28);pointer-events:none}
+.hero-logo{max-width:180px;width:100%;height:auto;margin:0 auto 15px;display:block;object-fit:contain}
 .eyebrow{font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;font-weight:bold}
-.hero h1{font-size:clamp(44px,7vw,82px);margin:18px 0 10px;line-height:.98}
+.hero h1{font-size:clamp(44px,7vw,78px);margin:15px 0 10px;line-height:.98}
 .hero p{max-width:620px;margin:0 auto 28px;color:var(--muted);font-size:17px}
 .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .primary,.secondary{padding:14px 24px;border-radius:999px;font-size:13px;font-weight:600;display:inline-block;cursor:pointer;border:none}
@@ -185,6 +186,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  .navbtn{padding:9px 14px;font-size:12px}
  .hero{min-height:500px}
  .hero:after{inset:3%}
+ .hero-logo{max-width:140px}
  .hero p{font-size:15px}
  section{padding:60px 0}
  .section-head h2{font-size:32px}
@@ -206,8 +208,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 <nav class="nav">
  <div class="container nav-inner">
   <div class="logo-container">
-   <!-- Logo em imagem (Substitua logo.png pela sua logo no GitHub se tiver) -->
-   <img src="logo.png" alt="Amazing Box Logo" class="logo-img" onerror="this.style.display='none'">
+   <img src="logo.png" alt="Amazing Box Logo" class="logo-img-nav" onerror="this.style.display='none'">
    <a class="logo-text" href="#">AMAZING BOX<small>CAICÓ • RN</small></a>
   </div>
   <div class="navlinks">
@@ -216,12 +217,14 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <a href="#como">Como funciona</a>
    <a href="#faq">FAQ</a>
   </div>
-  <a class="navbtn" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Vi%20o%20cat%C3%A1logo%20da%20Amazing%20Box%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+  <a class="navbtn" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Vi%20o%20cat%C3%A1logo%20da%20Amazing%20Box%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
  </div>
 </nav>
 
 <header class="hero">
  <div class="container">
+  <!-- LOGO NO TOPO EM DESTAQUE -->
+  <img src="logo.png" alt="Amazing Box Logo" class="hero-logo" onerror="this.style.display='none'">
   <div class="eyebrow">Presentes • Experiências • Afeto</div>
   <h1>Presentes que<br>viram memórias.</h1>
   <p>Cestas de café da manhã e experiências especiais preparadas para transformar momentos simples em lembranças inesquecíveis em Caicó.</p>
@@ -272,7 +275,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
      <div class="price">R$ 319,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-familia')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Gostaria%20de%20pedir%20o%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir no WhatsApp</a>
      </div>
     </div>
    </article>
@@ -288,7 +291,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
      <div class="price">R$ 259,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-luxo')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Gostaria%20de%20pedir%20o%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir no WhatsApp</a>
      </div>
     </div>
    </article>
@@ -331,7 +334,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
     </ul>
 
     <div class="price">R$ 319,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center;" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Estava%20olhando%20os%20detalhes%20do%20Caf%C3%A9%20Fam%C3%ADlia%20no%20site%20e%20quero%20fazer%20o%20pedido%21" target="_blank" rel="noopener">
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Estava%20olhando%20os%20detalhes%20da%20cesta%20Caf%C3%A9%20Fam%C3%ADlia%20no%20site%20e%20quero%20fazer%20o%20pedido%21" target="_blank" rel="noopener">
      Pedir Café Família pelo WhatsApp
     </a>
    </div>
@@ -371,7 +374,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
     </ul>
 
     <div class="price">R$ 259,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center;" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Estava%20olhando%20os%20detalhes%20do%20Caf%C3%A9%20Luxo%20no%20site%20e%20quero%20fazer%20o%20pedido%21" target="_blank" rel="noopener">
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Estava%20olhando%20os%20detalhes%20da%20cesta%20Caf%C3%A9%20Luxo%20no%20site%20e%20quero%20fazer%20o%20pedido%21" target="_blank" rel="noopener">
      Pedir Café Luxo pelo WhatsApp
     </a>
    </div>
@@ -465,7 +468,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   <div class="eyebrow">Sua surpresa começa aqui</div>
   <h2>Escolha um presente<br>para alguém especial.</h2>
   <p>Fale conosco pelo WhatsApp e vamos preparar cada detalhe.</p>
-  <a class="primary" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Quero%20conhecer%20as%20Boxes%20da%20Amazing%20Box." target="_blank" rel="noopener">Falar com a Amazing Box</a>
+  <a class="primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Quero%20conhecer%20as%20Boxes%20da%20Amazing%20Box." target="_blank" rel="noopener">Falar com a Amazing Box</a>
  </div>
 </section>
 
@@ -482,7 +485,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  </div>
 </footer>
 
-<a class="float" href="https://wa.me/5584999999999?text=Ol%C3%A1%21%20Vi%20o%20cat%C3%A1logo%20da%20Amazing%20Box." target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+<a class="float" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Vi%20o%20cat%C3%A1logo%20da%20Amazing%20Box." target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
  💬 Falar no WhatsApp
 </a>
 
