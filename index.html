@@ -65,13 +65,16 @@ section{padding:85px 0}
 /* Seção Quem Somos */
 .about-section{background:var(--paper);border-bottom:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-/* FOTO AJUSTADA PARA NÃO CORTAR CABEÇA */
+
+/* FOTO COM AJUSTE DE +25% NA PARTE SUPERIOR */
 .about-photo{
-  height:480px;border-radius:24px;
+  height:540px;
+  border-radius:24px;
   background-image: url('wandresson-e-thais.jpg');
   background-size:cover;
-  background-position: center 15%; /* Foca o enquadramento no topo/rostos */
-  border:1px solid var(--line);box-shadow:var(--shadow);
+  background-position: center 0%; /* Foca no topo para mostrar o topo da cabeça perfeitamente */
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
 }
 .about-badge{
   display:inline-block;background:var(--cream);border:1px solid var(--gold);
@@ -194,7 +197,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  section{padding:60px 0}
  .section-head h2{font-size:32px}
  .product-grid,.steps,.feature,.modal-grid,.about-grid{grid-template-columns:1fr}
- .about-photo{height:380px}
+ .about-photo{height:420px}
  .photo{height:250px}
  .feature .mock{height:280px}
  .feature h2{font-size:32px}
