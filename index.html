@@ -28,23 +28,20 @@ h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}
 a{text-decoration:none;color:inherit;transition:all .2s ease}
 .container{width:min(1120px,92%);margin:auto}
 
-/* Navegação */
+/* Navegação Centralizada */
 .nav{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav-inner{height:80px;display:flex;align-items:center;justify-content:space-between}
-.logo-container{display:flex;align-items:center;gap:12px}
+.logo-container{display:flex;align-items:center;gap:12px;margin:0 auto} /* Centralizado */
 .logo-img-nav{height:42px;width:auto;object-fit:contain}
-.logo-text{font-family:Georgia,serif;letter-spacing:.12em;font-size:20px;display:inline-block}
+.logo-text{font-family:Georgia,serif;letter-spacing:.12em;font-size:20px;display:inline-block;text-align:center}
 .logo-text small{display:block;font:10px Arial;letter-spacing:.25em;color:var(--gold);margin-top:-3px}
 .navlinks{display:flex;gap:25px;font-size:13px;color:var(--muted)}
 .navlinks a:hover{color:var(--brown)}
-.navbtn{padding:11px 17px;background:var(--brown);color:white;border-radius:999px;font-size:13px;font-weight:600}
-.navbtn:hover{background:var(--brown-hover)}
 
 /* Hero Header */
 .hero{min-height:620px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
 background:radial-gradient(circle at 20% 20%,#fffdf9 0,#f7f2ea 45%,#eee4d7 100%);padding:50px 0}
 .hero:after{content:"";position:absolute;inset:5%;border:1px solid rgba(176,138,88,.28);pointer-events:none}
-/* LOGO MAIOR NO TOPO */
 .hero-logo{max-width:280px;width:100%;height:auto;margin:0 auto 20px;display:block;object-fit:contain}
 .eyebrow{font-size:11px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;font-weight:bold}
 .hero h1{font-size:clamp(44px,7vw,78px);margin:15px 0 10px;line-height:.98}
@@ -65,14 +62,12 @@ section{padding:85px 0}
 /* Seção Quem Somos */
 .about-section{background:var(--paper);border-bottom:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-
-/* FOTO COM AJUSTE DE +25% NA PARTE SUPERIOR */
 .about-photo{
   height:540px;
   border-radius:24px;
   background-image: url('wandresson-e-thais.jpg');
   background-size:cover;
-  background-position: center 0%; /* Foca no topo para mostrar o topo da cabeça perfeitamente */
+  background-position: center 0%;
   border:1px solid var(--line);
   box-shadow:var(--shadow);
 }
@@ -143,8 +138,8 @@ section{padding:85px 0}
 .feature h2{font-size:44px;margin:10px 0}
 .feature p{color:var(--muted)}
 
-/* Passos */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+/* Passos (3 colunas agora) */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .step{padding:25px;border-top:2px solid var(--gold)}
 .num{font-family:Georgia,serif;font-size:28px;color:var(--gold)}
 .step h3{font-size:22px;margin:8px 0}
@@ -189,7 +184,6 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 /* Responsivo */
 @media(max-width:760px){
  .navlinks{display:none}
- .navbtn{padding:9px 14px;font-size:12px}
  .hero{min-height:500px}
  .hero:after{inset:3%}
  .hero-logo{max-width:200px}
@@ -223,13 +217,11 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <a href="#como">Como funciona</a>
    <a href="#faq">FAQ</a>
   </div>
-  <a class="navbtn" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Vi%20o%20cat%C3%A1logo%20da%20Amazing%20Box%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
  </div>
 </nav>
 
 <header class="hero">
  <div class="container">
-  <!-- LOGO EM DESTAQUE MAIOR -->
   <img src="logo.png" alt="Amazing Box Logo" class="hero-logo" onerror="this.style.display='none'">
   <div class="eyebrow">Presentes • Experiências • Afeto</div>
   <h1>Presentes que<br>viram memórias.</h1>
@@ -400,6 +392,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  </div>
 </section>
 
+<!-- SEÇÃO COMO FUNCIONA (3 PASSOS) -->
 <section id="como">
  <div class="container">
   <div class="section-head">
@@ -408,9 +401,8 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   </div>
   <div class="steps">
    <div class="step"><div class="num">01</div><h3>Escolha</h3><p>Encontre a Box que combina com o seu momento.</p></div>
-   <div class="step"><div class="num">02</div><h3>Personalize</h3><p>Converse conosco sobre detalhes e adicionais.</p></div>
-   <div class="step"><div class="num">03</div><h3>Agende</h3><p>Confirme data, horário e endereço da entrega.</p></div>
-   <div class="step"><div class="num">04</div><h3>Surpreenda</h3><p>Nós cuidamos da preparação e da entrega.</p></div>
+   <div class="step"><div class="num">02</div><h3>Agende</h3><p>Confirme data, horário e endereço da entrega.</p></div>
+   <div class="step"><div class="num">03</div><h3>Surpreenda</h3><p>Nós cuidamos da preparação e da entrega.</p></div>
   </div>
  </div>
 </section>
