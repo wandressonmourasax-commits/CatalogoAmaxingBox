@@ -124,9 +124,9 @@ section{padding:85px 0}
 .about-content p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:16px}
 .about-signature{margin-top:25px;padding-top:20px;border-top:1px solid var(--line);font-family:Georgia,serif;font-style:italic;color:var(--brown);font-size:18px}
 
-/* Produtos */
+/* Produtos — Grid ajustado para suportar múltiplos cards (3 ou mais) */
 .products{background:var(--cream)}
-.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.product-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px}
 .card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-content:space-between}
 
 .photo{
@@ -140,12 +140,12 @@ section{padding:85px 0}
 
 .cardbody{padding:27px;display:flex;flex-direction:column;flex-grow:1}
 .tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:bold}
-.card h3{font-size:29px;margin:8px 0}
+.card h3{font-size:26px;margin:8px 0}
 .card p{color:var(--muted);font-size:14px;line-height:1.6}
 .price{font-family:Georgia,serif;font-size:26px;margin:18px 0 10px;color:var(--brown)}
 .details{border-top:1px solid var(--line);padding-top:15px;color:var(--muted);font-size:13px;margin-bottom:15px}
 .card-actions{display:flex;gap:10px;margin-top:auto}
-.btn{display:inline-block;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:bold;text-align:center;cursor:pointer;border:none}
+.btn{display:inline-block;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:bold;text-align:center;cursor:pointer;border:none;flex:1}
 .btn-primary{background:var(--brown);color:#fff}
 .btn-primary:hover{background:var(--brown-hover)}
 .btn-outline{border:1px solid var(--brown);color:var(--brown);background:transparent}
@@ -244,6 +244,11 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 /* Botão Flutuante */
 .float{position:fixed;right:22px;bottom:22px;z-index:30;background:var(--green);color:white;border-radius:999px;padding:14px 22px;box-shadow:0 10px 25px rgba(0,0,0,.18);font-size:14px;font-weight:bold;display:flex;align-items:center;gap:8px}
 .float:hover{background:var(--green-dark);transform:scale(1.05)}
+
+/* Responsive Tablet & Notebooks Menores */
+@media(max-width:1024px){
+  .product-grid{grid-template-columns:repeat(2, 1fr)}
+}
 
 /* Ajustes Específicos para Celular (Telas <= 760px) */
 @media(max-width:760px){
@@ -356,7 +361,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
      <div class="price">R$ 319,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-familia')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir</a>
      </div>
     </div>
    </article>
@@ -372,7 +377,23 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
      <div class="price">R$ 259,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-luxo')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir</a>
+     </div>
+    </div>
+   </article>
+
+   <!-- Card 3: Cesta Aniversário Caramelo (NOVA) -->
+   <article class="card">
+    <div class="photo" style="background-image: url('aniversario-caramelo-capa.jpg');"></div>
+    <div class="cardbody">
+     <div class="tag">Aniversário • Celebração Individual</div>
+     <h3>Aniversário Caramelo</h3>
+     <p>Uma proposta elegante, refinada e completa em caixa estruturada de couro sintético caramelo com placa dourada.</p>
+     <div class="details">Caixa em Couro Sintético • Placa Metal Dourada</div>
+     <div class="price">R$ 380,00</div>
+     <div class="card-actions">
+      <button class="btn btn-outline" onclick="openModal('modal-caramelo')">Ver Detalhes</button>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Anivers%C3%A1rio%20Caramelo." target="_blank" rel="noopener">Pedir</a>
      </div>
     </div>
    </article>
@@ -390,9 +411,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   <h2>Café Família</h2>
   <div class="modal-grid">
    <div>
-    <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div>
-    <!-- Miniaturas -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe1.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"></div>
@@ -427,9 +446,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   <h2>Café Luxo</h2>
   <div class="modal-grid">
    <div>
-    <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-luxo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
-    <!-- Miniaturas -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-luxo-capa.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe1.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.jpg')"></div>
@@ -452,6 +469,46 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
     </ul>
     <div class="price">R$ 259,00</div>
     <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:15px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- Modal 3: Cesta Aniversário Caramelo (NOVO MODAL COM 6 FOTOS 9x16 NO CELULAR) -->
+<div class="modal-backdrop" id="modal-caramelo">
+ <div class="modal-content">
+  <button class="modal-close" onclick="closeModal('modal-caramelo')">&times;</button>
+  <h2>Aniversário Caramelo</h2>
+  <div class="modal-grid">
+   <div>
+    <!-- Imagem Principal da Galeria (9x16 perfeito no celular) -->
+    <div class="modal-gallery-main" id="main-img-caramelo" style="background-image: url('aniversario-caramelo-capa.jpg');"></div>
+    <!-- Miniaturas (6 Fotos no total) -->
+    <div class="modal-gallery-thumbs">
+     <div class="modal-thumb" style="background-image: url('aniversario-caramelo-capa.jpg');" onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-capa.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto2.jpg');" onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto3.jpg');" onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto3.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto4.jpg');" onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto4.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto5.jpg');" onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto5.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto6.jpg');" onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto6.jpg')"></div>
+    </div>
+   </div>
+   <div>
+    <p>Uma proposta elegante, sofisticada e completa para celebrar um aniversário de forma inesquecível. Montada em uma caixa estruturada de couro sintético caramelo com alças laterais e a exclusiva placa metálica dourada da Amazing Box.</p>
+    <strong>O que está incluído nesta cesta:</strong>
+    <ul class="items-list">
+     <li>Caixa estruturada em couro sintético nobre (Tom Caramelo)</li>
+     <li>Placa metálica dourada com gravação Amazing Box</li>
+     <li>Alças laterais com detalhes e acabamentos dourados</li>
+     <li>Bolo individual de aniversário com velinha decorativa</li>
+     <li>Suco de fruta especial / Bebida comemorativa</li>
+     <li>Seleção de pães artesanais e croissants recheados</li>
+     <li>Porção de doces finos e chocolates selecionados</li>
+     <li>Geleia artesanal e porção de biscoitos especiais</li>
+     <li>Cartão de felicitações personalizado com sua mensagem</li>
+    </ul>
+    <div class="price">R$ 380,00</div>
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:15px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Anivers%C3%A1rio%20Caramelo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
    </div>
   </div>
  </div>
