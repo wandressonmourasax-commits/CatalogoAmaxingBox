@@ -142,7 +142,7 @@ section{padding:85px 0}
 .btn-outline{border:1px solid var(--brown);color:var(--brown);background:transparent}
 .btn-outline:hover{background:var(--brown);color:#fff}
 
-/* Modal */
+/* Modal de Detalhes com Galeria */
 .modal-backdrop{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(45,41,37,0.6);backdrop-filter:blur(5px);
@@ -226,7 +226,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  .hero p{font-size:15px}
  section{padding:60px 0}
  .section-head h2{font-size:32px}
- .product-grid,.steps,.about-grid{grid-template-columns:1fr}
+ .product-grid,.steps,.about-grid,.modal-grid{grid-template-columns:1fr}
  .about-photo{height:420px}
  .photo{height:250px}
  .final h2{font-size:34px}
@@ -292,7 +292,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   <div class="section-head">
    <div class="eyebrow">Nossa coleção</div>
    <h2>Escolha sua experiência</h2>
-   <p>Abaixo estão as opções para surpreender. Clique em "Ver Detalhes" para conferir a lista completa de itens de cada cesta.</p>
+   <p>Abaixo estão as opções para surpreender. Clique em "Ver Detalhes" para conferir a galeria de imagens e a lista completa de itens de cada cesta.</p>
   </div>
   <div class="product-grid">
 
@@ -332,54 +332,78 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  </div>
 </section>
 
-<!-- MODAIS -->
+<!-- MODAIS DE DETALHES -->
+<!-- Modal 1: Café Família -->
 <div class="modal-backdrop" id="modal-familia">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-familia')">&times;</button>
   <h2>Café Família</h2>
   <div class="modal-grid">
-   <div><div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div></div>
    <div>
-    <p>A experiência ideal para ser compartilhada em família ou a dois.</p>
-    <strong>O que está incluído:</strong>
+    <!-- Imagem Principal da Galeria -->
+    <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div>
+    <!-- Miniaturas da Galeria -->
+    <div class="modal-gallery-thumbs">
+     <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-familia-2.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-familia-3.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-3.jpg')"></div>
+    </div>
+   </div>
+   <div>
+    <p>A experiência ideal para ser compartilhada em família ou a dois com muita variedade e charme.</p>
+    <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
-     <li>Bandeja artesanal em madeira Pinus</li>
-     <li>Cafés Drip Baggio</li>
+     <li>Bandeja artesanal em madeira Pinus (35x25cm)</li>
+     <li>Cafés Drip Coffee Baggio (2 sachês)</li>
      <li>Caneca artesanal de cerâmica</li>
-     <li>Bolo vulcão de chocolate</li>
-     <li>Pães artesanais e Croissants</li>
-     <li>Cartão personalizado</li>
+     <li>Bolo vulcão artesanal de chocolate</li>
+     <li>Mini croissants e pães artesanais</li>
+     <li>Frutas frescas selecionadas</li>
+     <li>Geleia artesanal e manteiga</li>
+     <li>Cartão personalizado com sua mensagem</li>
     </ul>
     <div class="price">R$ 319,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:15px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
    </div>
   </div>
  </div>
 </div>
 
+<!-- Modal 2: Café Luxo -->
 <div class="modal-backdrop" id="modal-luxo">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-luxo')">&times;</button>
   <h2>Café Luxo</h2>
   <div class="modal-grid">
-   <div><div class="modal-gallery-main"><span>Foto do Café Luxo</span></div></div>
    <div>
-    <p>Uma experiência intimista e sofisticada.</p>
-    <strong>O que está incluído:</strong>
+    <!-- Imagem Principal da Galeria -->
+    <div class="modal-gallery-main" id="main-img-luxo"><span>Foto Principal</span></div>
+    <!-- Miniaturas da Galeria -->
+    <div class="modal-gallery-thumbs">
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-1.jpg')"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-2.jpg')"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-3.jpg')"></div>
+    </div>
+   </div>
+   <div>
+    <p>Uma experiência intimista, charmosa e extremamente sofisticada para surpreender quem você ama.</p>
+    <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
-     <li>Maleta rígida luxo cartonada</li>
+     <li>Maleta rígida luxo cartonada especial</li>
      <li>Croissants artesanais recheados</li>
-     <li>Cappuccino especial</li>
+     <li>Cappuccino especial cremoso</li>
      <li>Porção de drágeas de chocolate nobre</li>
-     <li>Cartão personalizado</li>
+     <li>Mini geleia importada</li>
+     <li>Cartão personalizado com sua mensagem</li>
     </ul>
     <div class="price">R$ 259,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:15px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
    </div>
   </div>
  </div>
 </div>
 
+<!-- COMO FUNCIONA -->
 <section id="como">
  <div class="container">
   <div class="section-head"><h2>Como funciona</h2></div>
@@ -391,6 +415,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  </div>
 </section>
 
+<!-- CITAÇÃO -->
 <section class="quote">
  <div class="container">
   <div class="section-head"><h2>Quem recebe, sente.</h2></div>
@@ -398,7 +423,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  </div>
 </section>
 
-<!-- SEÇÃO FAQ (PERGUNTAS FREQUENTES) -->
+<!-- FAQ -->
 <section id="faq">
  <div class="container">
   <div class="section-head">
@@ -458,10 +483,38 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  💬 Falar no WhatsApp
 </a>
 
+<!-- JAVASCRIPT DAS GALERIAS E MODAIS -->
 <script>
-function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
-function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
-window.onclick = function(event) { if (event.target.classList.contains('modal-backdrop')) { event.target.classList.remove('active'); document.body.style.overflow = 'auto'; } }
+function openModal(id) { 
+  var modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.add('active'); 
+    document.body.style.overflow = 'hidden'; 
+  }
+}
+
+function closeModal(id) { 
+  var modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.remove('active'); 
+    document.body.style.overflow = 'auto'; 
+  }
+}
+
+function changeImage(containerId, imageUrl) {
+  var container = document.getElementById(containerId);
+  if (container) {
+    container.style.backgroundImage = "url('" + imageUrl + "')";
+    container.innerHTML = "";
+  }
+}
+
+window.onclick = function(event) { 
+  if (event.target.classList.contains('modal-backdrop')) { 
+    event.target.classList.remove('active'); 
+    document.body.style.overflow = 'auto'; 
+  } 
+}
 </script>
 
 </body>
