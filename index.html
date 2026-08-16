@@ -166,9 +166,9 @@ section{padding:85px 0}
   display:grid;place-items:center;color:#8d7b67;font-family:Georgia,serif;margin-bottom:12px;
   background-size:cover;background-position:center;transition:background-image 0.3s ease;
 }
-.modal-gallery-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.modal-gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .modal-thumb{
-  height:75px;border-radius:10px;background:linear-gradient(135deg,#ded0be,#f5eee4);
+  height:70px;border-radius:10px;background:linear-gradient(135deg,#ded0be,#f5eee4);
   cursor:pointer;background-size:cover;background-position:center;border:1px solid var(--line);
   transition:transform 0.2s, border-color 0.2s;
 }
@@ -342,11 +342,12 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <div>
     <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div>
-    <!-- Miniaturas da Galeria com os arquivos cafe-familia-detalhe1 e cafe-familia-detalhe2 -->
+    <!-- Miniaturas da Galeria (Capa + Detalhe 1, 2 e 3) -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe1.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe2.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe3.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe3.jpg')"></div>
     </div>
    </div>
    <div>
