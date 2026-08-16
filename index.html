@@ -52,8 +52,8 @@ a{text-decoration:none;color:inherit;transition:all .2s ease}
 .logo-text small{
   display: block;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
   font-size: 9px;
+  font-weight: 500;
   letter-spacing: 0.25em;
   color: var(--brown);
   opacity: 0.85;
@@ -166,9 +166,16 @@ section{padding:85px 0}
   display:grid;place-items:center;color:#8d7b67;font-family:Georgia,serif;margin-bottom:12px;
   background-size:cover;background-position:center;transition:background-image 0.3s ease;
 }
-.modal-gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.modal-gallery-thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  max-height:160px;
+  overflow-y:auto;
+  padding-right:2px;
+}
 .modal-thumb{
-  height:70px;border-radius:10px;background:linear-gradient(135deg,#ded0be,#f5eee4);
+  height:65px;border-radius:10px;background:linear-gradient(135deg,#ded0be,#f5eee4);
   cursor:pointer;background-size:cover;background-position:center;border:1px solid var(--line);
   transition:transform 0.2s, border-color 0.2s;
 }
@@ -296,7 +303,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   </div>
   <div class="product-grid">
 
-   <!-- Card 1 -->
+   <!-- Card 1: Café Família -->
    <article class="card">
     <div class="photo" style="background-image: url('cafe-familia-capa.jpg');"></div>
     <div class="cardbody">
@@ -312,9 +319,9 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
     </div>
    </article>
 
-   <!-- Card 2 -->
+   <!-- Card 2: Café Luxo -->
    <article class="card">
-    <div class="photo"><span>Foto do<br>Café Luxo</span></div>
+    <div class="photo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
     <div class="cardbody">
      <div class="tag">Café da manhã • Experiência premium</div>
      <h3>Café Luxo</h3>
@@ -333,6 +340,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 </section>
 
 <!-- MODAIS DE DETALHES -->
+
 <!-- Modal 1: Café Família -->
 <div class="modal-backdrop" id="modal-familia">
  <div class="modal-content">
@@ -342,7 +350,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <div>
     <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div>
-    <!-- Miniaturas da Galeria (Capa + Detalhe 1, 2 e 3) -->
+    <!-- Miniaturas da Galeria -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe1.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"></div>
@@ -378,19 +386,23 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   <div class="modal-grid">
    <div>
     <!-- Imagem Principal da Galeria -->
-    <div class="modal-gallery-main" id="main-img-luxo"><span>Foto Principal</span></div>
-    <!-- Miniaturas da Galeria -->
+    <div class="modal-gallery-main" id="main-img-luxo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
+    <!-- Miniaturas da Galeria (Capa + 6 fotos de detalhe) -->
     <div class="modal-gallery-thumbs">
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe-1.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe-1.jpg')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe-2.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe-2.jpg')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe-3.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe-3.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-capa.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe1.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe2.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe3.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe3.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe4.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe4.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe5.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe5.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe6.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe6.jpg')"></div>
     </div>
    </div>
    <div>
     <p>Uma experiência intimista, charmosa e extremamente sofisticada para surpreender quem você ama.</p>
     <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
-     <li>Maleta rígida luxo cartonada especial</li>
+     <li>Maleta rígida luxo cartonada especial (20x30cm)</li>
      <li>Croissants artesanais recheados</li>
      <li>Cappuccino especial cremoso</li>
      <li>Porção de drágeas de chocolate nobre</li>
