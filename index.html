@@ -104,16 +104,20 @@ section{padding:85px 0}
 /* Seção Quem Somos */
 .about-section{background:var(--paper);border-bottom:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.about-photo{
+.about-photo-wrapper{
   width: 100%;
   aspect-ratio: 9 / 16;
   max-height: 580px;
   border-radius: 24px;
-  background-image: url('wandresson-e-thais.jpg');
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+}
+.about-photo-wrapper img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .about-badge{
   display:inline-block;background:var(--cream);border:1px solid var(--gold);
@@ -127,15 +131,21 @@ section{padding:85px 0}
 /* Produtos */
 .products{background:var(--cream)}
 .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-content:space-between}
+.card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-space-between}
 
-.photo{
+.photo-wrapper{
   width: 100%;
   aspect-ratio: 9 / 12;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  background-color: #f2eae0;
+}
+.photo-wrapper img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .cardbody{padding:27px;display:flex;flex-direction:column;flex-grow:1}
@@ -175,12 +185,17 @@ section{padding:85px 0}
   width:100%;
   aspect-ratio: 9 / 12;
   border-radius:16px;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  overflow:hidden;
   margin-bottom:12px;
   border:1px solid var(--line);
-  transition:background-image 0.3s ease;
+  background-color: #f2eae0;
+}
+.modal-gallery-main img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .modal-gallery-thumbs{
@@ -195,11 +210,16 @@ section{padding:85px 0}
   height: 80px;
   flex-shrink: 0;
   border-radius: 8px;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   border: 1px solid var(--line);
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s;
+  background-color: #f2eae0;
+}
+.modal-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .modal-thumb:hover, .modal-thumb:active{transform:scale(1.05);border-color:var(--gold)}
 
@@ -258,8 +278,8 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  section{padding:50px 0}
  .section-head h2{font-size:32px}
  .product-grid,.steps,.about-grid,.modal-grid{grid-template-columns:1fr}
- .about-photo{aspect-ratio: 9 / 14; max-height: 480px;}
- .photo{aspect-ratio: 9 / 12;}
+ .about-photo-wrapper{aspect-ratio: 9 / 14; max-height: 480px;}
+ .photo-wrapper{aspect-ratio: 9 / 12;}
  .final h2{font-size:34px}
  .footer{display:flex;flex-direction:column;text-align:center}
  .modal-content{padding:18px}
@@ -305,7 +325,9 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 <section class="about-section" id="quem-somos">
  <div class="container">
   <div class="about-grid">
-   <div class="about-photo"></div>
+   <div class="about-photo-wrapper">
+    <img src="wandresson-e-thais.jpg" alt="Wandresson e Thaís" onerror="handleImgError(this)">
+   </div>
    <div class="about-content">
     <div class="about-badge">✦ Mais de 2.000 cestas entregues em Caicó</div>
     <h2>Quem somos nós</h2>
@@ -330,7 +352,9 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
 
    <!-- Card 1: Café Família -->
    <article class="card">
-    <div class="photo" style="background-image: url('cafe-familia-capa.jpg');"></div>
+    <div class="photo-wrapper">
+     <img src="cafe-familia-capa.jpg" alt="Café Família" onerror="handleImgError(this)">
+    </div>
     <div class="cardbody">
      <div class="tag">Café da manhã • Para compartilhar</div>
      <h3>Café Família</h3>
@@ -344,9 +368,11 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
     </div>
    </article>
 
-   <!-- Card 2: Café Luxo (.png) -->
+   <!-- Card 2: Café Luxo (Com fallback automático para PNG, .PNG e JPG) -->
    <article class="card">
-    <div class="photo" style="background-image: url('cafe-luxo-capa.png');"></div>
+    <div class="photo-wrapper">
+     <img src="cafe-luxo-capa.png" alt="Café Luxo" onerror="handleImgError(this)">
+    </div>
     <div class="cardbody">
      <div class="tag">Café da manhã • Experiência premium</div>
      <h3>Café Luxo</h3>
@@ -373,12 +399,14 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
   <h2>Café Família</h2>
   <div class="modal-grid">
    <div>
-    <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div>
+    <div class="modal-gallery-main">
+     <img id="main-img-familia" src="cafe-familia-capa.jpg" alt="Café Família" onerror="handleImgError(this)">
+    </div>
     <div class="modal-gallery-thumbs">
-     <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe1.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe2.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe2.jpg')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe3.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe3.jpg')"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"><img src="cafe-familia-capa.jpg" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"><img src="cafe-familia-detalhe1.jpg" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe2.jpg')"><img src="cafe-familia-detalhe2.jpg" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe3.jpg')"><img src="cafe-familia-detalhe3.jpg" onerror="handleImgError(this)"></div>
     </div>
    </div>
    <div>
@@ -401,22 +429,24 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  </div>
 </div>
 
-<!-- Modal 2: Café Luxo (.png) -->
+<!-- Modal 2: Café Luxo -->
 <div class="modal-backdrop" id="modal-luxo">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-luxo')">&times;</button>
   <h2>Café Luxo</h2>
   <div class="modal-grid">
    <div>
-    <div class="modal-gallery-main" id="main-img-luxo" style="background-image: url('cafe-luxo-capa.png');"></div>
+    <div class="modal-gallery-main">
+     <img id="main-img-luxo" src="cafe-luxo-capa.png" alt="Café Luxo" onerror="handleImgError(this)">
+    </div>
     <div class="modal-gallery-thumbs">
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-capa.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.png')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe1.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.png')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe2.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe2.png')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe3.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe3.png')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe4.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe4.png')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe5.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe5.png')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe6.png');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe6.png')"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.png')"><img src="cafe-luxo-capa.png" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.png')"><img src="cafe-luxo-detalhe1.png" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe2.png')"><img src="cafe-luxo-detalhe2.png" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe3.png')"><img src="cafe-luxo-detalhe3.png" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe4.png')"><img src="cafe-luxo-detalhe4.png" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe5.png')"><img src="cafe-luxo-detalhe5.png" onerror="handleImgError(this)"></div>
+     <div class="modal-thumb" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe6.png')"><img src="cafe-luxo-detalhe6.png" onerror="handleImgError(this)"></div>
     </div>
    </div>
    <div>
@@ -517,8 +547,19 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  💬 Falar no WhatsApp
 </a>
 
-<!-- JAVASCRIPT -->
+<!-- JAVASCRIPT COM TRATAMENTO AUTOMÁTICO DE ERROS DE EXTENSÃO -->
 <script>
+function handleImgError(img) {
+  var src = img.src;
+  if (src.endsWith('.png')) {
+    img.src = src.replace('.png', '.PNG');
+  } else if (src.endsWith('.PNG')) {
+    img.src = src.replace('.PNG', '.jpg');
+  } else if (src.endsWith('.jpg')) {
+    img.src = src.replace('.jpg', '.jpeg');
+  }
+}
+
 function openModal(id) { 
   var modal = document.getElementById(id);
   if (modal) {
@@ -535,10 +576,10 @@ function closeModal(id) {
   }
 }
 
-function changeImage(containerId, imageUrl) {
-  var container = document.getElementById(containerId);
-  if (container) {
-    container.style.backgroundImage = "url('" + imageUrl + "')";
+function changeImage(targetId, newSrc) {
+  var img = document.getElementById(targetId);
+  if (img) {
+    img.src = newSrc;
   }
 }
 
