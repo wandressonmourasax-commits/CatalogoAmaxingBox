@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Amazing Box — Presentes que transformam momentos em Caicó</title>
 <meta name="description" content="Amazing Box — cestas de café da manhã e experiências especiais para presentear em Caicó e região.">
 
@@ -152,18 +152,18 @@ section{padding:85px 0}
 .btn-outline{border:1px solid var(--brown);color:var(--brown);background:transparent}
 .btn-outline:hover{background:var(--brown);color:#fff}
 
-/* Modal de Detalhes com Galeria Vertical */
+/* Modal de Detalhes Uniforme e Otimizado */
 .modal-backdrop{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(45,41,37,0.6);backdrop-filter:blur(5px);
-  z-index:100;display:none;place-items:center;padding:15px;
-  overflow-y:auto;
+  z-index:100;display:none;align-items:flex-start;justify-content:center;
+  padding:20px 15px;overflow-y:auto;
 }
-.modal-backdrop.active{display:grid}
+.modal-backdrop.active{display:flex}
 .modal-content{
   background:var(--paper);border-radius:24px;max-width:850px;width:100%;
   padding:25px;position:relative;box-shadow:var(--shadow);border:1px solid var(--line);
-  max-height:92vh;overflow-y:auto;
+  margin:auto 0;max-height:88vh;overflow-y:auto;
 }
 .modal-close{
   position:absolute;top:15px;right:20px;font-size:28px;background:none;border:none;
@@ -185,7 +185,7 @@ section{padding:85px 0}
   transition:background-image 0.3s ease;
 }
 
-/* Miniaturas no modal (Rolagem horizontal ou em grid adaptado) */
+/* Miniaturas no modal com Rolagem Horizontal */
 .modal-gallery-thumbs{
   display:flex;
   gap:8px;
@@ -194,8 +194,8 @@ section{padding:85px 0}
   -webkit-overflow-scrolling: touch;
 }
 .modal-thumb{
-  width: 60px;
-  height: 80px;
+  width: 55px;
+  height: 75px;
   flex-shrink: 0;
   border-radius: 8px;
   background-size: cover;
@@ -265,8 +265,11 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  .photo{aspect-ratio: 9 / 12;}
  .final h2{font-size:34px}
  .footer{display:flex;flex-direction:column;text-align:center}
- .modal-content{padding:18px}
- .modal-gallery-main{aspect-ratio: 9 / 11;}
+ 
+ .modal-backdrop{padding:10px;}
+ .modal-content{padding:18px; max-height: 85vh;}
+ .modal-gallery-main{aspect-ratio: 9 / 10; max-height: 320px;}
+ .modal-thumb{width: 50px; height: 68px;}
 }
 </style>
 </head>
@@ -415,7 +418,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <div>
     <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-luxo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
-    <!-- Miniaturas com Rolagem Horizontal no Celular (Capa + 6 Detalhes) -->
+    <!-- Miniaturas com Rolagem Horizontal no Celular (Capa + 5 Detalhes = 6 fotos no total) -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-luxo-capa.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe1.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.jpg')"></div>
@@ -423,11 +426,10 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
      <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe3.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe3.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe4.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe4.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe5.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe5.jpg')"></div>
-     <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe6.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe6.jpg')"></div>
     </div>
    </div>
    <div>
-    <p>Uma experiência intimista, charmosa e extremamente sofisticada para surpreender quem você ama.</p>
+    <p>Uma experiência intimista, charmosa e extremely sofisticada para surpreender quem você ama.</p>
     <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
      <li>Maleta rígida luxo cartonada especial (20x30cm)</li>
@@ -530,6 +532,9 @@ function openModal(id) {
   var modal = document.getElementById(id);
   if (modal) {
     modal.classList.add('active'); 
+    modal.scrollTop = 0;
+    var content = modal.querySelector('.modal-content');
+    if (content) content.scrollTop = 0;
     document.body.style.overflow = 'hidden'; 
   }
 }
