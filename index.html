@@ -127,9 +127,8 @@ section{padding:85px 0}
 /* Produtos */
 .products{background:var(--cream)}
 .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-space-between}
+.card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-content:space-between}
 
-/* Ajuste das fotos dos cards para proporção vertical 9:16 */
 .photo{
   width: 100%;
   aspect-ratio: 9 / 12;
@@ -172,10 +171,10 @@ section{padding:85px 0}
 .modal-close:hover{color:var(--ink)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:15px}
 
-/* Foto principal no modal adaptada para 9:16 */
+/* Foto principal no modal (Computador) */
 .modal-gallery-main{
   width:100%;
-  aspect-ratio: 9 / 12;
+  aspect-ratio: 9 / 16;
   border-radius:16px;
   background-size:cover;
   background-position:center;
@@ -185,7 +184,7 @@ section{padding:85px 0}
   transition:background-image 0.3s ease;
 }
 
-/* Miniaturas no modal com Rolagem Horizontal */
+/* Miniaturas no modal */
 .modal-gallery-thumbs{
   display:flex;
   gap:8px;
@@ -195,7 +194,7 @@ section{padding:85px 0}
 }
 .modal-thumb{
   width: 55px;
-  height: 75px;
+  aspect-ratio: 9 / 16;
   flex-shrink: 0;
   border-radius: 8px;
   background-size: cover;
@@ -261,15 +260,27 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
  section{padding:50px 0}
  .section-head h2{font-size:32px}
  .product-grid,.steps,.about-grid,.modal-grid{grid-template-columns:1fr}
- .about-photo{aspect-ratio: 9 / 14; max-height: 480px;}
- .photo{aspect-ratio: 9 / 12;}
+ .about-photo{aspect-ratio: 9 / 16; max-height: 520px;}
  .final h2{font-size:34px}
  .footer{display:flex;flex-direction:column;text-align:center}
  
+ /* Ajustes Exclusivos dos Detalhes (Modal) no Celular */
  .modal-backdrop{padding:10px;}
- .modal-content{padding:18px; max-height: 85vh;}
- .modal-gallery-main{aspect-ratio: 9 / 10; max-height: 320px;}
- .modal-thumb{width: 50px; height: 68px;}
+ .modal-content{padding:18px; max-height: 90vh;}
+ 
+ /* Força a proporção 9x16 vertical impecável na foto principal dos detalhes no celular */
+ .modal-gallery-main{
+   aspect-ratio: 9 / 16 !important;
+   width: 100%;
+   max-height: 520px;
+ }
+ 
+ /* Ajuste das miniaturas no celular mantendo 9x16 */
+ .modal-thumb{
+   width: 50px;
+   aspect-ratio: 9 / 16 !important;
+   height: auto;
+ }
 }
 </style>
 </head>
@@ -381,7 +392,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <div>
     <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');"></div>
-    <!-- Miniaturas com Rolagem Horizontal no Celular -->
+    <!-- Miniaturas -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe1.jpg');" onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"></div>
@@ -418,7 +429,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
    <div>
     <!-- Imagem Principal da Galeria -->
     <div class="modal-gallery-main" id="main-img-luxo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
-    <!-- Miniaturas com Rolagem Horizontal no Celular (Capa + 5 Detalhes = 6 fotos no total) -->
+    <!-- Miniaturas -->
     <div class="modal-gallery-thumbs">
      <div class="modal-thumb" style="background-image: url('cafe-luxo-capa.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.jpg')"></div>
      <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe1.jpg');" onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.jpg')"></div>
@@ -429,7 +440,7 @@ footer{background:#2d2925;color:#eee;padding:45px 0}
     </div>
    </div>
    <div>
-    <p>Uma experiência intimista, charmosa e extremely sofisticada para surpreender quem você ama.</p>
+    <p>Uma experiência intimista, charmosa e extremamente sofisticada para surpreender quem você ama.</p>
     <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
      <li>Maleta rígida luxo cartonada especial (20x30cm)</li>
