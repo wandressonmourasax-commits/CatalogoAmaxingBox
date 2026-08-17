@@ -107,7 +107,6 @@ section{padding:60px 0}
 .about-photo{
   width: 100%;
   aspect-ratio: 3 / 4;
-  max-height: 400px;
   border-radius: 20px;
   background-image: url('wandresson-e-thais.jpg');
   background-size: cover;
@@ -124,16 +123,15 @@ section{padding:60px 0}
 .about-content p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:14px}
 .about-signature{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-family:Georgia,serif;font-style:italic;color:var(--brown);font-size:17px}
 
-/* Produtos — Fotos Verticais (9:12 / 3:4) Compactas */
+/* Produtos — Proporção Vertical 3:4 (9:12) */
 .products{background:var(--cream)}
 .product-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
 .card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-content:space-between}
 
-/* Foto do Card: Proporção Vertical 3:4 (9:12) com altura limitada */
+/* Foto do Card: Proporção Vertical 3:4 (9:12) */
 .photo{
   width: 100%;
   aspect-ratio: 3 / 4;
-  max-height: 280px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -177,7 +175,6 @@ section{padding:60px 0}
 .modal-gallery-main{
   width:100%;
   aspect-ratio: 3 / 4;
-  max-height: 320px;
   border-radius:12px;
   background-size:cover;
   background-position:center;
@@ -196,7 +193,7 @@ section{padding:60px 0}
   -webkit-overflow-scrolling: touch;
 }
 .modal-thumb{
-  width: 45px;
+  width: 48px;
   aspect-ratio: 3 / 4;
   flex-shrink: 0;
   border-radius: 6px;
@@ -253,7 +250,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
   .product-grid{grid-template-columns:repeat(2, 1fr)}
 }
 
-/* Otimização Exclusiva para Celular */
+/* Otimização Exclusiva para Celular (Fotos Verticais Reais 3:4 / 9:12) */
 @media(max-width:760px){
  .nav-inner{display:flex;justify-content:space-between;align-items:center}
  .navlinks{display:none}
@@ -269,24 +266,24 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  .section-head h2{font-size:28px}
  .product-grid,.steps,.about-grid,.modal-grid{grid-template-columns:1fr}
  
- /* Foto do Card Vertical (3:4 / 9:12) Compacta no Celular */
+ /* Foto do Card perfeitamente vertical (3:4 / 9:12) no celular */
  .photo{
    aspect-ratio: 3 / 4 !important;
-   max-height: 230px !important;
+   max-height: none !important;
  }
  
  .modal-backdrop{padding:10px;}
- .modal-content{padding:15px; max-height: 92vh;}
+ .modal-content{padding:15px; max-height: 90vh;}
  
- /* Foto Principal do Modal Vertical (3:4 / 9:12) Compacta no Celular */
+ /* Foto do Modal em formato vertical proporcional para exibir detalhes */
  .modal-gallery-main{
    aspect-ratio: 3 / 4 !important;
    width: 100%;
-   max-height: 240px !important;
+   max-height: 320px !important;
  }
  
  .modal-thumb{
-   width: 42px;
+   width: 45px;
    aspect-ratio: 3 / 4 !important;
  }
  
