@@ -106,7 +106,7 @@ section{padding:60px 0}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .about-photo{
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 380px;
   border-radius: 20px;
   background-image: url('wandresson-e-thais.jpg');
   background-size: cover;
@@ -128,11 +128,10 @@ section{padding:60px 0}
 .product-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
 .card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;transition:.25s ease;display:flex;flex-direction:column;justify-content:space-between}
 
-/* Foto do Card */
+/* Foto do Card - Computador */
 .photo{
   width: 100%;
-  aspect-ratio: 3 / 4;
-  max-height: 380px;
+  height: 280px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -172,11 +171,10 @@ section{padding:60px 0}
 .modal-close:hover{color:var(--ink)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px;align-items:start}
 
-/* Foto principal do Modal */
+/* Foto do Modal */
 .modal-gallery-main{
   width:100%;
-  aspect-ratio: 3 / 4;
-  max-height: 380px;
+  height: 280px;
   border-radius:12px;
   background-size:cover;
   background-position:center;
@@ -195,8 +193,8 @@ section{padding:60px 0}
   -webkit-overflow-scrolling: touch;
 }
 .modal-thumb{
-  width: 44px;
-  height: 58px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
   border-radius: 6px;
   background-size: cover;
@@ -252,7 +250,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
   .product-grid{grid-template-columns:repeat(2, 1fr)}
 }
 
-/* Otimização de Imagens Compactas e Verticais no Celular */
+/* Otimização Exclusiva para CELULAR */
 @media(max-width:760px){
  .nav-inner{display:flex;justify-content:space-between;align-items:center}
  .navlinks{display:none}
@@ -268,26 +266,27 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  .section-head h2{font-size:28px}
  .product-grid,.steps,.about-grid,.modal-grid{grid-template-columns:1fr}
  
- /* Foto do Card mais compacta no Celular */
+ /* AJUSTE COMPACTO DAS IMAGENS NO CELULAR */
  .photo{
-   aspect-ratio: 3 / 4;
-   max-height: 280px !important;
+   height: 210px !important; /* Reduz de ~500px para 210px para não estourar a tela */
+   aspect-ratio: auto !important;
  }
  
+ .about-photo{
+   height: 250px !important;
+ }
+
  .modal-backdrop{padding:10px;}
  .modal-content{padding:15px; max-height: 90vh;}
  
- /* Foto do Modal Compacta e Vertical no Celular */
  .modal-gallery-main{
-   aspect-ratio: 3 / 4;
-   width: 100%;
-   max-height: 220px !important;
-   margin-bottom: 8px;
+   height: 200px !important; /* Foto do modal compacta */
+   aspect-ratio: auto !important;
  }
  
  .modal-thumb{
-   width: 38px;
-   height: 50px;
+   width: 40px;
+   height: 40px;
  }
  
  .final h2{font-size:30px}
