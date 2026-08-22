@@ -233,7 +233,7 @@ section{padding:60px 0}
 
 /* Footer */
 footer{background:#2d2925;color:#eee;padding:35px 0}
-.footer{display:flex;justify-space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 .footer p{color:#bdb3aa;font-size:12px;margin:4px 0}
 .footer a{color:#eee}
 .footer a:hover{color:var(--gold)}
@@ -247,9 +247,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
   .product-grid{grid-template-columns:repeat(2, 1fr)}
 }
 
-/* =========================================================
-   CONFIGURAÇÃO OTIMIZADA E RIGOROSA DE FOTOS 3:4 NO CELULAR
-   ========================================================= */
+/* Responsive Mobile */
 @media(max-width:760px){
  body{font-size:13px}
  .nav-inner{height:60px;display:flex;justify-content:space-between;align-items:center}
@@ -456,6 +454,22 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </article>
 
+   <!-- Card 5: Elegance -->
+   <article class="card">
+    <div class="photo" style="background-image: url('elegance-capa.jpg');"></div>
+    <div class="cardbody">
+     <div class="tag">Café da manhã • Alta Gastronomia</div>
+     <h3>Elegance</h3>
+     <p>Uma proposta sofisticada e refinada, cuidadosamente montada em uma elegante base de acrílico com seleção gourmet.</p>
+     <div class="details">Base em Acrílico • 25 × 25 cm</div>
+     <div class="price">R$ 290,00</div>
+     <div class="card-actions">
+      <button class="btn btn-outline" onclick="openModal('modal-elegance')">Ver Detalhes</button>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Elegance." target="_blank" rel="noopener">Pedir</a>
+     </div>
+    </div>
+   </article>
+
   </div>
  </div>
 </section>
@@ -604,6 +618,52 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </ul>
     <div class="price">R$ 380,00</div>
     <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Anivers%C3%A1rio%20Caramelo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- Modal 5: Elegance -->
+<div class="modal-backdrop" id="modal-elegance">
+ <div class="modal-content">
+  <button class="modal-close" onclick="closeModal('modal-elegance')">&times;</button>
+  <h2>Elegance</h2>
+  <div class="modal-grid">
+   <div>
+    <div class="modal-gallery-main" id="main-img-elegance" style="background-image: url('elegance-capa.jpg');"></div>
+    <div class="modal-gallery-thumbs">
+     <div class="modal-thumb" style="background-image: url('elegance-capa.jpg');" onclick="changeImage('main-img-elegance', 'elegance-capa.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('elegance-foto2.jpg');" onclick="changeImage('main-img-elegance', 'elegance-foto2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('elegance-foto3.jpg');" onclick="changeImage('main-img-elegance', 'elegance-foto3.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('elegance-foto4.jpg');" onclick="changeImage('main-img-elegance', 'elegance-foto4.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('elegance-foto5.jpg');" onclick="changeImage('main-img-elegance', 'elegance-foto5.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('elegance-foto6.jpg');" onclick="changeImage('main-img-elegance', 'elegance-foto6.jpg')"></div>
+    </div>
+   </div>
+   <div>
+    <p>Uma proposta mais refinada de café da manhã, cuidadosamente montada em uma elegante base de acrílico e composta por uma seleção de sabores artesanais e ingredientes especiais. Uma experiência sofisticada, criada para transformar momentos especiais em lembranças inesquecíveis.</p>
+    <strong>O que está incluído nesta experiência:</strong>
+    <ul class="items-list">
+     <li>Elegante base de acrílico (25x25cm)</li>
+     <li>Suco de laranja natural</li>
+     <li>Potiche de vidro com geleia artesanal de morango</li>
+     <li>Mel especial com pegador artesanal</li>
+     <li>Castanhas caramelizadas selecionadas</li>
+     <li>Frutas frescas (morangos e uvas sem sementes)</li>
+     <li>Bento Cake festivo</li>
+     <li>Flores artesanais de salame com lombo canadense e queijo muçarela</li>
+     <li>Croissant folhado bem fresquinho</li>
+     <li>Pão baguete artesanal</li>
+     <li>Stroopwafel holandês tradicional</li>
+     <li>Waffle macio</li>
+     <li>Pão de queijo recheado com Catupiry</li>
+     <li>Quiche salgada delicada</li>
+     <li>Drip Coffee especial</li>
+     <li>Bombom Ferrero Rocher</li>
+     <li>Cartão personalizado com sua mensagem</li>
+    </ul>
+    <div class="price">R$ 290,00</div>
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Elegance." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
    </div>
   </div>
  </div>
