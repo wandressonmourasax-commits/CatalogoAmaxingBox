@@ -204,6 +204,46 @@ section{padding:60px 0}
 
 .items-list{margin:12px 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.6}
 
+/* Estilos da Interface de Upsell (Adicionais) */
+.upsell-container {
+  display: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 15px;
+  box-shadow: var(--shadow);
+}
+.upsell-container.active { display: block; }
+.upsell-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: var(--brown);
+  margin: 0 0 6px 0;
+}
+.upsell-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.addon-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.addon-option:hover { background: var(--cream); }
+.addon-left { display: flex; align-items: center; gap: 10px; }
+.addon-left input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--brown); cursor: pointer; }
+.addon-name { font-size: 13px; font-weight: bold; color: var(--ink); }
+.addon-price { font-size: 12px; font-weight: bold; color: var(--gold); }
+.upsell-actions { display: flex; gap: 8px; margin-top: 14px; }
+
 /* Passos */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step{padding:20px;border-top:2px solid var(--gold)}
@@ -524,8 +564,30 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Bolinho caseiro com generosa cobertura de chocolate</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price">R$ 190,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Individual." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    <div class="price" id="price-individual">R$ 190,00</div>
+    <button class="btn btn-primary" id="btn-trigger-individual" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-individual')">Pedir pelo WhatsApp</button>
+    
+    <!-- Caixas de Adicionais (Upsell) -->
+    <div class="upsell-container" id="upsell-modal-individual">
+      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
+      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-individual', 190)"> <span class="addon-name">Balão Personalizado</span></div>
+        <span class="addon-price">+ R$ 25,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-individual', 190)"> <span class="addon-name">Caneca Especial</span></div>
+        <span class="addon-price">+ R$ 35,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-individual', 190)"> <span class="addon-name">Flores c/ Fotos Miniatura</span></div>
+        <span class="addon-price">+ R$ 45,00</span>
+      </label>
+      <div class="upsell-actions">
+        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Individual', 190, 'modal-individual', false)">Não, continuar sem adicionais</button>
+        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Individual', 190, 'modal-individual', true)">Avançar para o WhatsApp ➔</button>
+      </div>
+    </div>
    </div>
   </div>
  </div>
@@ -559,8 +621,29 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Geleia artesanal e manteiga</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price">R$ 319,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    <div class="price" id="price-familia">R$ 319,00</div>
+    <button class="btn btn-primary" id="btn-trigger-familia" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-familia')">Pedir pelo WhatsApp</button>
+    
+    <div class="upsell-container" id="upsell-modal-familia">
+      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
+      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-familia', 319)"> <span class="addon-name">Balão Personalizado</span></div>
+        <span class="addon-price">+ R$ 25,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-familia', 319)"> <span class="addon-name">Caneca Especial</span></div>
+        <span class="addon-price">+ R$ 35,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-familia', 319)"> <span class="addon-name">Flores c/ Fotos Miniatura</span></div>
+        <span class="addon-price">+ R$ 45,00</span>
+      </label>
+      <div class="upsell-actions">
+        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Família', 319, 'modal-familia', false)">Não, continuar sem adicionais</button>
+        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Família', 319, 'modal-familia', true)">Avançar para o WhatsApp ➔</button>
+      </div>
+    </div>
    </div>
   </div>
  </div>
@@ -594,8 +677,29 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Mini geleia importada</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price">R$ 259,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    <div class="price" id="price-luxo">R$ 259,00</div>
+    <button class="btn btn-primary" id="btn-trigger-luxo" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-luxo')">Pedir pelo WhatsApp</button>
+    
+    <div class="upsell-container" id="upsell-modal-luxo">
+      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
+      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-luxo', 259)"> <span class="addon-name">Balão Personalizado</span></div>
+        <span class="addon-price">+ R$ 25,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-luxo', 259)"> <span class="addon-name">Caneca Especial</span></div>
+        <span class="addon-price">+ R$ 35,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-luxo', 259)"> <span class="addon-name">Flores c/ Fotos Miniatura</span></div>
+        <span class="addon-price">+ R$ 45,00</span>
+      </label>
+      <div class="upsell-actions">
+        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Luxo', 259, 'modal-luxo', false)">Não, continuar sem adicionais</button>
+        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Luxo', 259, 'modal-luxo', true)">Avançar para o WhatsApp ➔</button>
+      </div>
+    </div>
    </div>
   </div>
  </div>
@@ -632,8 +736,29 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Geleia artesanal e porção de biscoitos especiais</li>
      <li>Cartão de felicitações personalizado com sua mensagem</li>
     </ul>
-    <div class="price">R$ 380,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Anivers%C3%A1rio%20Caramelo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    <div class="price" id="price-caramelo">R$ 380,00</div>
+    <button class="btn btn-primary" id="btn-trigger-caramelo" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-caramelo')">Pedir pelo WhatsApp</button>
+    
+    <div class="upsell-container" id="upsell-modal-caramelo">
+      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
+      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-caramelo', 380)"> <span class="addon-name">Balão Personalizado</span></div>
+        <span class="addon-price">+ R$ 25,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-caramelo', 380)"> <span class="addon-name">Caneca Especial</span></div>
+        <span class="addon-price">+ R$ 35,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-caramelo', 380)"> <span class="addon-name">Flores c/ Fotos Miniatura</span></div>
+        <span class="addon-price">+ R$ 45,00</span>
+      </label>
+      <div class="upsell-actions">
+        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Aniversário Caramelo', 380, 'modal-caramelo', false)">Não, continuar sem adicionais</button>
+        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Aniversário Caramelo', 380, 'modal-caramelo', true)">Avançar para o WhatsApp ➔</button>
+      </div>
+    </div>
    </div>
   </div>
  </div>
@@ -678,8 +803,29 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Bombom Ferrero Rocher</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price">R$ 290,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Cristal%20M." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    <div class="price" id="price-elegance">R$ 290,00</div>
+    <button class="btn btn-primary" id="btn-trigger-elegance" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-elegance')">Pedir pelo WhatsApp</button>
+    
+    <div class="upsell-container" id="upsell-modal-elegance">
+      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
+      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-elegance', 290)"> <span class="addon-name">Balão Personalizado</span></div>
+        <span class="addon-price">+ R$ 25,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-elegance', 290)"> <span class="addon-name">Caneca Especial</span></div>
+        <span class="addon-price">+ R$ 35,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-elegance', 290)"> <span class="addon-name">Flores c/ Fotos Miniatura</span></div>
+        <span class="addon-price">+ R$ 45,00</span>
+      </label>
+      <div class="upsell-actions">
+        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Cristal M', 290, 'modal-elegance', false)">Não, continuar sem adicionais</button>
+        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Cristal M', 290, 'modal-elegance', true)">Avançar para o WhatsApp ➔</button>
+      </div>
+    </div>
    </div>
   </div>
  </div>
@@ -716,8 +862,29 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Drip Coffee especial</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price">R$ 280,00</div>
-    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Te%20Amo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    <div class="price" id="price-te-amo">R$ 280,00</div>
+    <button class="btn btn-primary" id="btn-trigger-te-amo" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-te-amo')">Pedir pelo WhatsApp</button>
+    
+    <div class="upsell-container" id="upsell-modal-te-amo">
+      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
+      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-te-amo', 280)"> <span class="addon-name">Balão Personalizado</span></div>
+        <span class="addon-price">+ R$ 25,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-te-amo', 280)"> <span class="addon-name">Caneca Especial</span></div>
+        <span class="addon-price">+ R$ 35,00</span>
+      </label>
+      <label class="addon-option">
+        <div class="addon-left"><input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-te-amo', 280)"> <span class="addon-name">Flores c/ Fotos Miniatura</span></div>
+        <span class="addon-price">+ R$ 45,00</span>
+      </label>
+      <div class="upsell-actions">
+        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Te Amo', 280, 'modal-te-amo', false)">Não, continuar sem adicionais</button>
+        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Te Amo', 280, 'modal-te-amo', true)">Avançar para o WhatsApp ➔</button>
+      </div>
+    </div>
    </div>
   </div>
  </div>
@@ -803,7 +970,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  💬 Falar no WhatsApp
 </a>
 
-<!-- JAVASCRIPT DAS GALERIAS E MODAIS -->
+<!-- JAVASCRIPT DAS GALERIAS, MODAIS E UPSELL -->
 <script>
 function openModal(id) { 
   var modal = document.getElementById(id);
@@ -813,6 +980,12 @@ function openModal(id) {
     var content = modal.querySelector('.modal-content');
     if (content) content.scrollTop = 0;
     document.body.style.overflow = 'hidden'; 
+    
+    // Reseta estado do upsell ao abrir modal
+    var upsell = document.getElementById('upsell-' + id);
+    if (upsell) upsell.classList.remove('active');
+    var triggerBtn = document.getElementById('btn-trigger-' + id.replace('modal-', ''));
+    if (triggerBtn) triggerBtn.style.display = 'block';
   }
 }
 
@@ -829,6 +1002,49 @@ function changeImage(containerId, imageUrl) {
   if (container) {
     container.style.backgroundImage = "url('" + imageUrl + "')";
   }
+}
+
+// Lógica para mostrar adicionais
+function showUpsell(modalId) {
+  var upsell = document.getElementById('upsell-' + modalId);
+  var btnTrigger = document.getElementById('btn-trigger-' + modalId.replace('modal-', ''));
+  if (upsell) upsell.classList.add('active');
+  if (btnTrigger) btnTrigger.style.display = 'none';
+}
+
+// Atualização de Preço Total Dinâmico
+function updateTotalPrice(modalId, basePrice) {
+  var modal = document.getElementById(modalId);
+  var checkboxes = modal.querySelectorAll('input[type="checkbox"]:checked');
+  var total = basePrice;
+  checkboxes.forEach(function(cb) {
+    total += parseFloat(cb.getAttribute('data-price') || 0);
+  });
+  var priceElement = modal.querySelector('.price');
+  if (priceElement) {
+    priceElement.innerHTML = 'R$ ' + total.toFixed(2).replace('.', ',');
+  }
+}
+
+// Redirecionamento e construção da mensagem para o WhatsApp
+function sendOrder(boxName, basePrice, modalId, includeAddons) {
+  var phoneNumber = '5584996317328';
+  var message = "Olá! Gostaria de fazer o pedido da cesta: " + boxName + ".";
+  
+  if (includeAddons) {
+    var modal = document.getElementById(modalId);
+    var checkboxes = modal.querySelectorAll('input[type="checkbox"]:checked');
+    if (checkboxes.length > 0) {
+      var selectedAddons = [];
+      checkboxes.forEach(function(cb) {
+        selectedAddons.push(cb.value);
+      });
+      message += "\n\n*Gostaria de acrescentar os seguintes adicionais:*\n- " + selectedAddons.join("\n- ");
+    }
+  }
+  
+  var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+  window.open(whatsappUrl, '_blank');
 }
 
 window.onclick = function(event) { 
