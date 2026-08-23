@@ -788,7 +788,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
    <div class="delivery-radio-group">
     
     <label class="radio-card selected" id="card-radio-entrega" onclick="selectDeliveryOption('entrega')">
-     <input type="radio" name="delivery_type" id="radio-entrega" value="Entrega em Caicó (de carro - R$ 15,00)" checked>
+     <input type="radio" name="delivery_type" id="radio-entrega" value="entrega" checked>
      <div class="radio-card-text">
       🚗 Quero que entregue
       <small>Área urbana de Caicó (entrega de carro) • R$ 15,00</small>
@@ -796,7 +796,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </label>
 
     <label class="radio-card" id="card-radio-retirada" onclick="selectDeliveryOption('retirada')">
-     <input type="radio" name="delivery_type" id="radio-retirada" value="Retirada no local">
+     <input type="radio" name="delivery_type" id="radio-retirada" value="retirada">
      <div class="radio-card-text">
       🛍️ Quero Fazer Retirada
       <small>Retire diretamente em nosso endereço</small>
@@ -818,7 +818,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <p>Balão metalizado transparente/personalizado com nome ou frase curta.</p>
      <div class="addon-price-tag">+ R$ 25,00</div>
      <div class="addon-checkbox-wrapper">
-      <input type="checkbox" id="chk-balao" value="Balão Personalizado (+ R$ 25,00)" onclick="event.stopPropagation(); updateCardStyle(this)">
+      <input type="checkbox" id="chk-balao" data-name="Balão Personalizado" data-price="25" onclick="event.stopPropagation(); updateCardStyle(this)">
       <span>Adicionar</span>
      </div>
     </div>
@@ -832,7 +832,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <p>Caneca de cerâmica artesanal/personalizada para recordar diariamente.</p>
      <div class="addon-price-tag">+ R$ 35,00</div>
      <div class="addon-checkbox-wrapper">
-      <input type="checkbox" id="chk-caneca" value="Caneca Especial (+ R$ 35,00)" onclick="event.stopPropagation(); updateCardStyle(this)">
+      <input type="checkbox" id="chk-caneca" data-name="Caneca Especial" data-price="35" onclick="event.stopPropagation(); updateCardStyle(this)">
       <span>Adicionar</span>
      </div>
     </div>
@@ -846,7 +846,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <p>Arranjo de flores com minilaboratório de fotos polaroid integradas.</p>
      <div class="addon-price-tag">+ R$ 45,00</div>
      <div class="addon-checkbox-wrapper">
-      <input type="checkbox" id="chk-flores" value="Flores c/ Mini Fotos (+ R$ 45,00)" onclick="event.stopPropagation(); updateCardStyle(this)">
+      <input type="checkbox" id="chk-flores" data-name="Flores c/ Mini Fotos" data-price="45" onclick="event.stopPropagation(); updateCardStyle(this)">
       <span>Adicionar</span>
      </div>
     </div>
@@ -940,6 +940,18 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
 <script>
 var selectedBoxName = "";
 
+// Preços base das cestas
+var boxPrices = {
+  "Café Individual": 190.00,
+  "Café Família": 319.00,
+  "Café Luxo": 259.00,
+  "Aniversário Caramelo": 380.00,
+  "Café Cristal M": 290.00,
+  "Café Te Amo": 280.00
+};
+
+var deliveryFee = 15.00;
+
 function openModal(id) { 
   var modal = document.getElementById(id);
   if (modal) {
@@ -1019,24 +1031,49 @@ function updateCardStyle(checkbox) {
   }
 }
 
+function formatCurrency(val) {
+  return "R$ " + val.toFixed(2).replace(".", ",");
+}
+
 function sendToWhatsApp() {
   var deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
+  var isDelivery = (deliveryType === 'entrega');
   
-  var message = "Olá! Gostaria de fazer o pedido da cesta: *" + selectedBoxName + "*";
-  message += "\n📌 *Opção de recebimento:* " + deliveryType;
+  var boxPrice = boxPrices[selectedBoxName] || 0;
+  var currentDeliveryPrice = isDelivery ? deliveryFee : 0;
+  var totalAddonsPrice = 0;
   
-  var selectedAddons = [];
+  var selectedAddonsText = [];
   var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]:checked');
   
   checkboxes.forEach(function(chk) {
-    selectedAddons.push(chk.value);
+    var name = chk.getAttribute('data-name');
+    var price = parseFloat(chk.getAttribute('data-price')) || 0;
+    totalAddonsPrice += price;
+    selectedAddonsText.push(name + " (" + formatCurrency(price) + ")");
   });
 
-  if (selectedAddons.length > 0) {
-    message += "\n\n✨ *Adicionais escolhidos:*\n- " + selectedAddons.join("\n- ");
+  var grandTotal = boxPrice + currentDeliveryPrice + totalAddonsPrice;
+
+  // Montagem da Mensagem
+  var message = "Olá! Gostaria de fazer o pedido da cesta:\n";
+  message += "🎁 *Cesta:* " + selectedBoxName + " — " + formatCurrency(boxPrice) + "\n\n";
+  
+  message += "📍 *Forma de Recebimento:*\n";
+  if (isDelivery) {
+    message += "- Entrega em Caicó (de carro): " + formatCurrency(deliveryFee) + "\n\n";
   } else {
-    message += "\n\n✨ *Adicionais:* Nenhum adicional selecionado.";
+    message += "- Retirada no local (Sem taxa)\n\n";
   }
+
+  message += "✨ *Adicionais:*\n";
+  if (selectedAddonsText.length > 0) {
+    message += "- " + selectedAddonsText.join("\n- ") + "\n\n";
+  } else {
+    message += "- Nenhum adicional selecionado\n\n";
+  }
+
+  message += "💰 *VALOR TOTAL DO PEDIDO: " + formatCurrency(grandTotal) + "*";
 
   var whatsappUrl = "https://wa.me/5584996317328?text=" + encodeURIComponent(message);
   window.open(whatsappUrl, '_blank');
