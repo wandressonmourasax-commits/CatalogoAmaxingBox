@@ -202,12 +202,57 @@ section{padding:60px 0}
 .modal-thumb:hover, .modal-thumb:active{transform:scale(1.05);border-color:var(--gold)}
 .items-list{margin:12px 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.6}
 
-/* MODAL DE ADICIONAIS COM FOTOS MAIORES */
+/* MODAL DE ADICIONAIS & ENTREGA */
 .addon-modal-content { max-width: 840px; }
 .addon-title-box { text-align: center; margin-bottom: 20px; }
 .addon-title-box h2 { font-size: 26px; color: var(--brown); margin: 4px 0; }
 .addon-title-box p { font-size: 13px; color: var(--muted); margin: 0; }
 
+/* Bloco Tipo de Recebimento */
+.delivery-option-block {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.delivery-option-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--brown);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.delivery-radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.radio-card {
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.radio-card:hover { border-color: var(--gold); }
+.radio-card.selected { border-color: var(--brown); background: #faf6f0; }
+.radio-card input[type="radio"] { accent-color: var(--brown); width: 18px; height: 18px; cursor: pointer; }
+.radio-card-text { font-size: 13px; font-weight: bold; color: var(--ink); }
+.radio-card-text small { display: block; font-size: 11px; font-weight: normal; color: var(--muted); }
+
+/* Grid de Adicionais */
+.addon-section-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
 .addon-cards-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
 .addon-item-card {
   background: #fff;
@@ -223,7 +268,6 @@ section{padding:60px 0}
 .addon-item-card:hover { border-color: var(--gold); }
 .addon-item-card.selected { border-color: var(--brown); background: #faf6f0; }
 
-/* Fotos Maiores nos Adicionais */
 .addon-img-large {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -313,7 +357,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  .section-head h2{font-size:25px}
  .section-head p{font-size:12.5px}
  
- .product-grid,.steps,.about-grid,.modal-grid,.addon-cards-wrapper{grid-template-columns:1fr;gap:18px}
+ .product-grid,.steps,.about-grid,.modal-grid,.addon-cards-wrapper,.delivery-radio-group{grid-template-columns:1fr;gap:12px}
  .card{border-radius:16px}
  .photo { width: 100% !important; height: auto !important; aspect-ratio: 3 / 4 !important; background-size: cover !important; background-position: center !important; }
  .cardbody{padding:16px}
@@ -727,17 +771,43 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </div>
 
-<!-- NOVA JANELA / MODAL DE ADICIONAIS -->
+<!-- JANELA / MODAL DE PEDIDO (ENTREGA + ADICIONAIS) -->
 <div class="modal-backdrop" id="modal-adicionais">
  <div class="modal-content addon-modal-content">
   <button class="modal-close" onclick="closeModal('modal-adicionais')">&times;</button>
   
   <div class="addon-title-box">
-   <div class="eyebrow">Personalize o seu presente</div>
-   <h2>Deseja incluir algum adicional?</h2>
-   <p>Selecione os itens desejados abaixo para complementar sua cesta ou siga direto para o WhatsApp.</p>
+   <div class="eyebrow">Personalize o seu pedido</div>
+   <h2>Opções de Envio e Adicionais</h2>
+   <p>Selecione como deseja receber seu pedido e escolha adicionais para surpreender ainda mais.</p>
   </div>
 
+  <!-- PASSO 1: ENTREGA OU RETIRADA -->
+  <div class="delivery-option-block">
+   <div class="delivery-option-title">📍 Como prefere receber a sua cesta?</div>
+   <div class="delivery-radio-group">
+    
+    <label class="radio-card selected" id="card-radio-entrega" onclick="selectDeliveryOption('entrega')">
+     <input type="radio" name="delivery_type" id="radio-entrega" value="Entrega" checked>
+     <div class="radio-card-text">
+      🚚 Quero Receber por Entrega
+      <small>Entregamos em toda a área urbana de Caicó</small>
+     </div>
+    </label>
+
+    <label class="radio-card" id="card-radio-retirada" onclick="selectDeliveryOption('retirada')">
+     <input type="radio" name="delivery_type" id="radio-retirada" value="Retirada">
+     <div class="radio-card-text">
+      🛍️ Quero Fazer Retirada
+      <small>Retire diretamente em nosso endereço</small>
+     </div>
+    </label>
+
+   </div>
+  </div>
+
+  <!-- PASSO 2: SELEÇÃO DE ADICIONAIS -->
+  <div class="addon-section-title">✨ Deseja incluir algum adicional especial? (Opcional)</div>
   <div class="addon-cards-wrapper">
    
    <!-- Adicional 1 -->
@@ -785,8 +855,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
   </div>
 
   <div class="addon-footer-actions">
-   <button class="btn btn-outline" onclick="sendToWhatsApp(false)">Seguir Apenas com a Cesta</button>
-   <button class="btn btn-primary" onclick="sendToWhatsApp(true)">Concluir Pedido no WhatsApp ➔</button>
+   <button class="btn btn-primary" onclick="sendToWhatsApp()">Concluir Pedido no WhatsApp ➔</button>
   </div>
 
  </div>
@@ -897,11 +966,14 @@ function changeImage(containerId, imageUrl) {
   }
 }
 
-/* Lógica da Janela de Adicionais */
+/* Lógica da Janela de Adicionais e Entrega */
 function openAddonModal(boxName) {
   selectedBoxName = boxName;
   
-  // Limpa seleções anteriores
+  // Reseta para a opção Entrega como padrão
+  selectDeliveryOption('entrega');
+
+  // Limpa seleções de adicionais
   var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]');
   checkboxes.forEach(function(chk) {
     chk.checked = false;
@@ -909,6 +981,23 @@ function openAddonModal(boxName) {
   });
 
   openModal('modal-adicionais');
+}
+
+function selectDeliveryOption(type) {
+  var radioEntrega = document.getElementById('radio-entrega');
+  var radioRetirada = document.getElementById('radio-retirada');
+  var cardEntrega = document.getElementById('card-radio-entrega');
+  var cardRetirada = document.getElementById('card-radio-retirada');
+
+  if (type === 'entrega') {
+    radioEntrega.checked = true;
+    cardEntrega.classList.add('selected');
+    cardRetirada.classList.remove('selected');
+  } else {
+    radioRetirada.checked = true;
+    cardRetirada.classList.add('selected');
+    cardEntrega.classList.remove('selected');
+  }
 }
 
 function toggleAddonCard(cardElement, checkboxId) {
@@ -930,20 +1019,23 @@ function updateCardStyle(checkbox) {
   }
 }
 
-function sendToWhatsApp(includeAddons) {
-  var message = "Olá! Gostaria de fazer o pedido da cesta: " + selectedBoxName;
+function sendToWhatsApp() {
+  var deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
   
-  if (includeAddons) {
-    var selectedAddons = [];
-    var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]:checked');
-    
-    checkboxes.forEach(function(chk) {
-      selectedAddons.push(chk.value);
-    });
+  var message = "Olá! Gostaria de fazer o pedido da cesta: *" + selectedBoxName + "*";
+  message += "\n📌 *Opção de recebimento:* " + deliveryType;
+  
+  var selectedAddons = [];
+  var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]:checked');
+  
+  checkboxes.forEach(function(chk) {
+    selectedAddons.push(chk.value);
+  });
 
-    if (selectedAddons.length > 0) {
-      message += "\n\n*Adicionais escolhidos:*\n- " + selectedAddons.join("\n- ");
-    }
+  if (selectedAddons.length > 0) {
+    message += "\n\n✨ *Adicionais escolhidos:*\n- " + selectedAddons.join("\n- ");
+  } else {
+    message += "\n\n✨ *Adicionais:* Nenhum adicional selecionado.";
   }
 
   var whatsappUrl = "https://wa.me/5584996317328?text=" + encodeURIComponent(message);
