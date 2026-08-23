@@ -6,7 +6,6 @@
 <title>Amazing Box — Presentes que transformam momentos em Caicó</title>
 <meta name="description" content="Amazing Box — cestas de café da manhã e experiências especiais para presentear em Caicó e região.">
 
-<!-- Fonte Montserrat para a marca -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -150,7 +149,7 @@ section{padding:60px 0}
 .btn-outline{border:1px solid var(--brown);color:var(--brown);background:transparent}
 .btn-outline:hover{background:var(--brown);color:#fff}
 
-/* Modal de Detalhes */
+/* Modais (Bases Gerais) */
 .modal-backdrop{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(45,41,37,0.6);backdrop-filter:blur(4px);
@@ -201,56 +200,55 @@ section{padding:60px 0}
   transition: transform 0.2s, border-color 0.2s;
 }
 .modal-thumb:hover, .modal-thumb:active{transform:scale(1.05);border-color:var(--gold)}
-
 .items-list{margin:12px 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.6}
 
-/* Estilos da Interface de Upsell (Adicionais) */
-.upsell-container {
-  display: none;
+/* MODAL DE ADICIONAIS COM FOTOS MAIORES */
+.addon-modal-content { max-width: 840px; }
+.addon-title-box { text-align: center; margin-bottom: 20px; }
+.addon-title-box h2 { font-size: 26px; color: var(--brown); margin: 4px 0; }
+.addon-title-box p { font-size: 13px; color: var(--muted); margin: 0; }
+
+.addon-cards-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.addon-item-card {
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 16px;
-  margin-top: 15px;
-  box-shadow: var(--shadow);
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
-.upsell-container.active { display: block; }
-.upsell-title {
-  font-family: Georgia, serif;
-  font-size: 18px;
-  color: var(--brown);
-  margin: 0 0 6px 0;
+.addon-item-card:hover { border-color: var(--gold); }
+.addon-item-card.selected { border-color: var(--brown); background: #faf6f0; }
+
+/* Fotos Maiores nos Adicionais */
+.addon-img-large {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid var(--line);
 }
-.upsell-subtitle {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.addon-option {
+
+.addon-info { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; }
+.addon-info h4 { margin: 0 0 6px 0; font-size: 16px; font-family: Georgia, serif; color: var(--ink); }
+.addon-info p { font-size: 11.5px; color: var(--muted); margin: 0 0 10px 0; line-height: 1.4; flex-grow: 1; }
+.addon-info .addon-price-tag { font-weight: bold; color: var(--brown); font-size: 14px; }
+
+.addon-checkbox-wrapper {
+  margin-top: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--brown);
 }
-.addon-option:hover { background: var(--cream); }
-.addon-left { display: flex; align-items: center; gap: 10px; }
-.addon-left input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--brown); cursor: pointer; }
-.addon-thumb {
-  width: 42px;
-  height: 42px;
-  border-radius: 6px;
-  object-fit: cover;
-  border: 1px solid var(--line);
-}
-.addon-details { display: flex; flex-direction: column; }
-.addon-name { font-size: 13px; font-weight: bold; color: var(--ink); }
-.addon-price { font-size: 12px; font-weight: bold; color: var(--gold); }
-.upsell-actions { display: flex; gap: 8px; margin-top: 14px; }
+.addon-checkbox-wrapper input { accent-color: var(--brown); width: 16px; height: 16px; cursor: pointer; }
+
+.addon-footer-actions { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; }
 
 /* Passos */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -290,12 +288,10 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
 .float{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--green);color:white;border-radius:999px;padding:11px 18px;box-shadow:0 8px 20px rgba(0,0,0,.18);font-size:12px;font-weight:bold;display:flex;align-items:center;gap:6px}
 .float:hover{background:var(--green-dark);transform:scale(1.04)}
 
-/* Responsive Tablet */
 @media(max-width:1024px){
   .product-grid{grid-template-columns:repeat(2, 1fr)}
+  .addon-cards-wrapper{grid-template-columns:repeat(2, 1fr)}
 }
-
-/* Responsive Mobile */
 @media(max-width:760px){
  body{font-size:13px}
  .nav-inner{height:60px;display:flex;justify-content:space-between;align-items:center}
@@ -317,18 +313,9 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  .section-head h2{font-size:25px}
  .section-head p{font-size:12.5px}
  
- .product-grid,.steps,.about-grid,.modal-grid{grid-template-columns:1fr;gap:18px}
- 
+ .product-grid,.steps,.about-grid,.modal-grid,.addon-cards-wrapper{grid-template-columns:1fr;gap:18px}
  .card{border-radius:16px}
- 
- .photo {
-   width: 100% !important;
-   height: auto !important;
-   aspect-ratio: 3 / 4 !important;
-   background-size: cover !important;
-   background-position: center !important;
- }
- 
+ .photo { width: 100% !important; height: auto !important; aspect-ratio: 3 / 4 !important; background-size: cover !important; background-position: center !important; }
  .cardbody{padding:16px}
  .card h3{font-size:19px}
  .card p{font-size:12.5px}
@@ -336,15 +323,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  .details{font-size:11px;padding-top:10px;margin-bottom:10px}
  .btn{padding:9px 12px;font-size:11.5px}
 
- .about-photo {
-   width: 100% !important;
-   height: auto !important;
-   aspect-ratio: 3 / 4 !important;
-   background-size: cover !important;
-   background-position: center !important;
-   border-radius: 16px;
- }
- 
+ .about-photo { width: 100% !important; height: auto !important; aspect-ratio: 3 / 4 !important; background-size: cover !important; background-position: center !important; border-radius: 16px; }
  .about-content h2{font-size:25px}
  .about-content p{font-size:13px}
  
@@ -355,25 +334,11 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  .modal-backdrop{padding:8px;}
  .modal-content{padding:14px; border-radius:16px; max-height: 92vh;}
  .modal-content h2{font-size:20px; margin-top:4px;}
- 
- .modal-gallery-main {
-   width: 100% !important;
-   height: auto !important;
-   aspect-ratio: 3 / 4 !important;
-   background-size: cover !important;
-   background-position: center !important;
-   border-radius: 12px;
- }
- 
- .modal-thumb {
-   width: 52px !important;
-   height: auto !important;
-   aspect-ratio: 3 / 4 !important;
-   background-size: cover !important;
-   background-position: center !important;
-   border-radius: 6px;
- }
+ .modal-gallery-main { width: 100% !important; height: auto !important; aspect-ratio: 3 / 4 !important; background-size: cover !important; background-position: center !important; border-radius: 12px; }
+ .modal-thumb { width: 52px !important; height: auto !important; aspect-ratio: 3 / 4 !important; background-size: cover !important; background-position: center !important; border-radius: 6px; }
  .items-list{font-size:12px; line-height:1.55; margin:10px 0; padding-left:16px;}
+ .addon-footer-actions{flex-direction:column;}
+ .addon-footer-actions .btn{width:100%;}
 }
 </style>
 </head>
@@ -406,12 +371,10 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
   <p>Cestas de café da manhã e experiências especiais preparadas para transformar momentos simples em lembranças inesquecíveis em Caicó.</p>
   <div class="actions">
    <a class="primary" href="#boxes">Conheça nossas Cestas</a>
-   <a class="secondary" href="#quem-somos">Nossa História</a>
   </div>
  </div>
 </header>
 
-<!-- SEÇÃO QUEM SOMOS -->
 <section class="about-section" id="quem-somos">
  <div class="container">
   <div class="about-grid">
@@ -428,7 +391,6 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </section>
 
-<!-- SEÇÃO PRODUTOS -->
 <section class="products" id="boxes">
  <div class="container">
   <div class="section-head">
@@ -438,7 +400,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
   </div>
   <div class="product-grid">
 
-   <!-- Card 1: Café Individual -->
+   <!-- Card 1 -->
    <article class="card">
     <div class="photo" style="background-image: url('cafe-individual-capa.jpg');"></div>
     <div class="cardbody">
@@ -449,12 +411,12 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <div class="price">R$ 190,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-individual')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Individual." target="_blank" rel="noopener">Pedir</a>
+      <button class="btn btn-primary" onclick="openAddonModal('Café Individual')">Pedir</button>
      </div>
     </div>
    </article>
 
-   <!-- Card 2: Café Família -->
+   <!-- Card 2 -->
    <article class="card">
     <div class="photo" style="background-image: url('cafe-familia-capa.jpg');"></div>
     <div class="cardbody">
@@ -465,12 +427,12 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <div class="price">R$ 319,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-familia')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Fam%C3%ADlia." target="_blank" rel="noopener">Pedir</a>
+      <button class="btn btn-primary" onclick="openAddonModal('Café Família')">Pedir</button>
      </div>
     </div>
    </article>
 
-   <!-- Card 3: Café Luxo -->
+   <!-- Card 3 -->
    <article class="card">
     <div class="photo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
     <div class="cardbody">
@@ -481,12 +443,12 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <div class="price">R$ 259,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-luxo')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Luxo." target="_blank" rel="noopener">Pedir</a>
+      <button class="btn btn-primary" onclick="openAddonModal('Café Luxo')">Pedir</button>
      </div>
     </div>
    </article>
 
-   <!-- Card 4: Cesta Aniversário Caramelo -->
+   <!-- Card 4 -->
    <article class="card">
     <div class="photo" style="background-image: url('aniversario-caramelo-capa.jpg');"></div>
     <div class="cardbody">
@@ -497,12 +459,12 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <div class="price">R$ 380,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-caramelo')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Anivers%C3%A1rio%20Caramelo." target="_blank" rel="noopener">Pedir</a>
+      <button class="btn btn-primary" onclick="openAddonModal('Aniversário Caramelo')">Pedir</button>
      </div>
     </div>
    </article>
 
-   <!-- Card 5: Café Cristal M -->
+   <!-- Card 5 -->
    <article class="card">
     <div class="photo" style="background-image: url('elegance-capa.jpg');"></div>
     <div class="cardbody">
@@ -513,12 +475,12 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <div class="price">R$ 290,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-elegance')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Cristal%20M." target="_blank" rel="noopener">Pedir</a>
+      <button class="btn btn-primary" onclick="openAddonModal('Café Cristal M')">Pedir</button>
      </div>
     </div>
    </article>
 
-   <!-- Card 6: Café Te Amo -->
+   <!-- Card 6 -->
    <article class="card">
     <div class="photo" style="background-image: url('cafe-te-amo-capa.jpg');"></div>
     <div class="cardbody">
@@ -529,7 +491,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <div class="price">R$ 280,00</div>
      <div class="card-actions">
       <button class="btn btn-outline" onclick="openModal('modal-te-amo')">Ver Detalhes</button>
-      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Te%20Amo." target="_blank" rel="noopener">Pedir</a>
+      <button class="btn btn-primary" onclick="openAddonModal('Café Te Amo')">Pedir</button>
      </div>
     </div>
    </article>
@@ -538,9 +500,8 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </section>
 
-<!-- MODAIS DE DETALHES -->
+<!-- MODAIS DE DETALHES DE CADA CESTA -->
 
-<!-- Modal 1: Café Individual -->
 <div class="modal-backdrop" id="modal-individual">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-individual')">&times;</button>
@@ -558,7 +519,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </div>
    <div>
-    <p>Uma cesta de café da manhã pensada para uma pessoa, com uma seleção delicada, elegante e extremamente saborosa. O presente simples e perfeito para celebrar com carinho.</p>
+    <p>Uma cesta de café da manhã pensada para uma pessoa, com uma seleção delicada, elegante e extremamente saborosa.</p>
     <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
      <li>Flor de lombo canadense artesanal</li>
@@ -572,58 +533,13 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Bolinho caseiro com generosa cobertura de chocolate</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price" id="price-individual">R$ 190,00</div>
-    <button class="btn btn-primary" id="btn-trigger-individual" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-individual')">Pedir pelo WhatsApp</button>
-    
-    <!-- Caixas de Adicionais (Upsell) -->
-    <div class="upsell-container" id="upsell-modal-individual">
-      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
-      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
-      
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-individual', 190)">
-          <img src="adicional-balao.jpg" alt="Balão Personalizado" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Balão'">
-          <div class="addon-details">
-            <span class="addon-name">Balão Personalizado</span>
-            <span class="addon-price">+ R$ 25,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-individual', 190)">
-          <img src="adicional-caneca.jpg" alt="Caneca Especial" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Caneca'">
-          <div class="addon-details">
-            <span class="addon-name">Caneca Especial</span>
-            <span class="addon-price">+ R$ 35,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-individual', 190)">
-          <img src="adicional-flores.jpg" alt="Flores c/ Fotos Miniatura" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Flores'">
-          <div class="addon-details">
-            <span class="addon-name">Flores c/ Fotos Miniatura</span>
-            <span class="addon-price">+ R$ 45,00</span>
-          </div>
-        </div>
-      </label>
-
-      <div class="upsell-actions">
-        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Individual', 190, 'modal-individual', false)">Não, continuar sem adicionais</button>
-        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Individual', 190, 'modal-individual', true)">Avançar para o WhatsApp ➔</button>
-      </div>
-    </div>
+    <div class="price">R$ 190,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-individual'); openAddonModal('Café Individual');">Avançar para Pedido</button>
    </div>
   </div>
  </div>
 </div>
 
-<!-- Modal 2: Café Família -->
 <div class="modal-backdrop" id="modal-familia">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-familia')">&times;</button>
@@ -651,57 +567,13 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Geleia artesanal e manteiga</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price" id="price-familia">R$ 319,00</div>
-    <button class="btn btn-primary" id="btn-trigger-familia" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-familia')">Pedir pelo WhatsApp</button>
-    
-    <div class="upsell-container" id="upsell-modal-familia">
-      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
-      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
-      
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-familia', 319)">
-          <img src="adicional-balao.jpg" alt="Balão Personalizado" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Balão'">
-          <div class="addon-details">
-            <span class="addon-name">Balão Personalizado</span>
-            <span class="addon-price">+ R$ 25,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-familia', 319)">
-          <img src="adicional-caneca.jpg" alt="Caneca Especial" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Caneca'">
-          <div class="addon-details">
-            <span class="addon-name">Caneca Especial</span>
-            <span class="addon-price">+ R$ 35,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-familia', 319)">
-          <img src="adicional-flores.jpg" alt="Flores c/ Fotos Miniatura" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Flores'">
-          <div class="addon-details">
-            <span class="addon-name">Flores c/ Fotos Miniatura</span>
-            <span class="addon-price">+ R$ 45,00</span>
-          </div>
-        </div>
-      </label>
-
-      <div class="upsell-actions">
-        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Família', 319, 'modal-familia', false)">Não, continuar sem adicionais</button>
-        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Família', 319, 'modal-familia', true)">Avançar para o WhatsApp ➔</button>
-      </div>
-    </div>
+    <div class="price">R$ 319,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-familia'); openAddonModal('Café Família');">Avançar para Pedido</button>
    </div>
   </div>
  </div>
 </div>
 
-<!-- Modal 3: Café Luxo -->
 <div class="modal-backdrop" id="modal-luxo">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-luxo')">&times;</button>
@@ -729,57 +601,13 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Mini geleia importada</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price" id="price-luxo">R$ 259,00</div>
-    <button class="btn btn-primary" id="btn-trigger-luxo" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-luxo')">Pedir pelo WhatsApp</button>
-    
-    <div class="upsell-container" id="upsell-modal-luxo">
-      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
-      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-luxo', 259)">
-          <img src="adicional-balao.jpg" alt="Balão Personalizado" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Balão'">
-          <div class="addon-details">
-            <span class="addon-name">Balão Personalizado</span>
-            <span class="addon-price">+ R$ 25,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-luxo', 259)">
-          <img src="adicional-caneca.jpg" alt="Caneca Especial" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Caneca'">
-          <div class="addon-details">
-            <span class="addon-name">Caneca Especial</span>
-            <span class="addon-price">+ R$ 35,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-luxo', 259)">
-          <img src="adicional-flores.jpg" alt="Flores c/ Fotos Miniatura" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Flores'">
-          <div class="addon-details">
-            <span class="addon-name">Flores c/ Fotos Miniatura</span>
-            <span class="addon-price">+ R$ 45,00</span>
-          </div>
-        </div>
-      </label>
-
-      <div class="upsell-actions">
-        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Luxo', 259, 'modal-luxo', false)">Não, continuar sem adicionais</button>
-        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Luxo', 259, 'modal-luxo', true)">Avançar para o WhatsApp ➔</button>
-      </div>
-    </div>
+    <div class="price">R$ 259,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-luxo'); openAddonModal('Café Luxo');">Avançar para Pedido</button>
    </div>
   </div>
  </div>
 </div>
 
-<!-- Modal 4: Cesta Aniversário Caramelo -->
 <div class="modal-backdrop" id="modal-caramelo">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-caramelo')">&times;</button>
@@ -797,7 +625,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </div>
    <div>
-    <p>Uma proposta elegante, sofisticada e completa para celebrar um aniversário de forma inesquecível. Montada em uma caixa estruturada de couro sintético caramelo com alças laterais e a exclusiva placa metálica dourada da Amazing Box.</p>
+    <p>Uma proposta elegante, sofisticada e completa em caixa estruturada de couro sintético caramelo com alças e placa metálica dourada.</p>
     <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
      <li>Caixa estruturada em couro sintético nobre (Tom Caramelo)</li>
@@ -810,57 +638,13 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Geleia artesanal e porção de biscoitos especiais</li>
      <li>Cartão de felicitações personalizado com sua mensagem</li>
     </ul>
-    <div class="price" id="price-caramelo">R$ 380,00</div>
-    <button class="btn btn-primary" id="btn-trigger-caramelo" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-caramelo')">Pedir pelo WhatsApp</button>
-    
-    <div class="upsell-container" id="upsell-modal-caramelo">
-      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
-      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-caramelo', 380)">
-          <img src="adicional-balao.jpg" alt="Balão Personalizado" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Balão'">
-          <div class="addon-details">
-            <span class="addon-name">Balão Personalizado</span>
-            <span class="addon-price">+ R$ 25,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-caramelo', 380)">
-          <img src="adicional-caneca.jpg" alt="Caneca Especial" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Caneca'">
-          <div class="addon-details">
-            <span class="addon-name">Caneca Especial</span>
-            <span class="addon-price">+ R$ 35,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-caramelo', 380)">
-          <img src="adicional-flores.jpg" alt="Flores c/ Fotos Miniatura" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Flores'">
-          <div class="addon-details">
-            <span class="addon-name">Flores c/ Fotos Miniatura</span>
-            <span class="addon-price">+ R$ 45,00</span>
-          </div>
-        </div>
-      </label>
-
-      <div class="upsell-actions">
-        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Aniversário Caramelo', 380, 'modal-caramelo', false)">Não, continuar sem adicionais</button>
-        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Aniversário Caramelo', 380, 'modal-caramelo', true)">Avançar para o WhatsApp ➔</button>
-      </div>
-    </div>
+    <div class="price">R$ 380,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-caramelo'); openAddonModal('Aniversário Caramelo');">Avançar para Pedido</button>
    </div>
   </div>
  </div>
 </div>
 
-<!-- Modal 5: Café Cristal M -->
 <div class="modal-backdrop" id="modal-elegance">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-elegance')">&times;</button>
@@ -878,7 +662,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </div>
    <div>
-    <p>Uma proposta mais refinada de café da manhã, cuidadosamente montada em uma elegante base de acrílico e composta por uma seleção de sabores artesanais e ingredientes especiais. Uma experiência sofisticada, criada para transformar momentos especiais em lembranças inesquecíveis.</p>
+    <p>Uma proposta refinada de café da manhã, cuidadosamente montada em uma elegante base de acrílico.</p>
     <strong>O que está incluído nesta experiência:</strong>
     <ul class="items-list">
      <li>Elegante base de acrílico (25x25cm)</li>
@@ -899,57 +683,13 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Bombom Ferrero Rocher</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price" id="price-elegance">R$ 290,00</div>
-    <button class="btn btn-primary" id="btn-trigger-elegance" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-elegance')">Pedir pelo WhatsApp</button>
-    
-    <div class="upsell-container" id="upsell-modal-elegance">
-      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
-      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-elegance', 290)">
-          <img src="adicional-balao.jpg" alt="Balão Personalizado" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Balão'">
-          <div class="addon-details">
-            <span class="addon-name">Balão Personalizado</span>
-            <span class="addon-price">+ R$ 25,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-elegance', 290)">
-          <img src="adicional-caneca.jpg" alt="Caneca Especial" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Caneca'">
-          <div class="addon-details">
-            <span class="addon-name">Caneca Especial</span>
-            <span class="addon-price">+ R$ 35,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-elegance', 290)">
-          <img src="adicional-flores.jpg" alt="Flores c/ Fotos Miniatura" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Flores'">
-          <div class="addon-details">
-            <span class="addon-name">Flores c/ Fotos Miniatura</span>
-            <span class="addon-price">+ R$ 45,00</span>
-          </div>
-        </div>
-      </label>
-
-      <div class="upsell-actions">
-        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Cristal M', 290, 'modal-elegance', false)">Não, continuar sem adicionais</button>
-        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Cristal M', 290, 'modal-elegance', true)">Avançar para o WhatsApp ➔</button>
-      </div>
-    </div>
+    <div class="price">R$ 290,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-elegance'); openAddonModal('Café Cristal M');">Avançar para Pedido</button>
    </div>
   </div>
  </div>
 </div>
 
-<!-- Modal 6: Café Te Amo -->
 <div class="modal-backdrop" id="modal-te-amo">
  <div class="modal-content">
   <button class="modal-close" onclick="closeModal('modal-te-amo')">&times;</button>
@@ -965,7 +705,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </div>
    <div>
-    <p>Uma proposta delicada e sofisticada, criada para presentear com elegância. O Café Te Amo reúne uma seleção de sabores artesanais e um charmoso Bento Cake que torna a experiência ainda mais memorável. Perfeita para aniversários, celebrações e momentos cheios de afeto.</p>
+    <p>Uma proposta delicada e sofisticada, criada para presentear com elegância e um charmoso Bento Cake.</p>
     <strong>O que está incluído nesta cesta:</strong>
     <ul class="items-list">
      <li>Charmoso Bento Cake decorado</li>
@@ -980,57 +720,78 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
      <li>Drip Coffee especial</li>
      <li>Cartão personalizado com sua mensagem</li>
     </ul>
-    <div class="price" id="price-te-amo">R$ 280,00</div>
-    <button class="btn btn-primary" id="btn-trigger-te-amo" style="display:block; width:100%; text-align:center; margin-top:12px;" onclick="showUpsell('modal-te-amo')">Pedir pelo WhatsApp</button>
-    
-    <div class="upsell-container" id="upsell-modal-te-amo">
-      <div class="upsell-title">Deseja acrescentar algum adicional?</div>
-      <div class="upsell-subtitle">Deixe seu presente ainda mais inesquecível:</div>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Balão Personalizado" data-price="25" onchange="updateTotalPrice('modal-te-amo', 280)">
-          <img src="adicional-balao.jpg" alt="Balão Personalizado" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Balão'">
-          <div class="addon-details">
-            <span class="addon-name">Balão Personalizado</span>
-            <span class="addon-price">+ R$ 25,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Caneca Especial" data-price="35" onchange="updateTotalPrice('modal-te-amo', 280)">
-          <img src="adicional-caneca.jpg" alt="Caneca Especial" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Caneca'">
-          <div class="addon-details">
-            <span class="addon-name">Caneca Especial</span>
-            <span class="addon-price">+ R$ 35,00</span>
-          </div>
-        </div>
-      </label>
-
-      <label class="addon-option">
-        <div class="addon-left">
-          <input type="checkbox" value="Flores com Miniaturas de Fotos" data-price="45" onchange="updateTotalPrice('modal-te-amo', 280)">
-          <img src="adicional-flores.jpg" alt="Flores c/ Fotos Miniatura" class="addon-thumb" onerror="this.src='https://via.placeholder.com/42?text=Flores'">
-          <div class="addon-details">
-            <span class="addon-name">Flores c/ Fotos Miniatura</span>
-            <span class="addon-price">+ R$ 45,00</span>
-          </div>
-        </div>
-      </label>
-
-      <div class="upsell-actions">
-        <button class="btn btn-outline" style="font-size:10.5px;" onclick="sendOrder('Café Te Amo', 280, 'modal-te-amo', false)">Não, continuar sem adicionais</button>
-        <button class="btn btn-primary" style="font-size:10.5px;" onclick="sendOrder('Café Te Amo', 280, 'modal-te-amo', true)">Avançar para o WhatsApp ➔</button>
-      </div>
-    </div>
+    <div class="price">R$ 280,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-te-amo'); openAddonModal('Café Te Amo');">Avançar para Pedido</button>
    </div>
   </div>
  </div>
 </div>
 
-<!-- COMO FUNCIONA -->
+<!-- NOVA JANELA / MODAL DE ADICIONAIS -->
+<div class="modal-backdrop" id="modal-adicionais">
+ <div class="modal-content addon-modal-content">
+  <button class="modal-close" onclick="closeModal('modal-adicionais')">&times;</button>
+  
+  <div class="addon-title-box">
+   <div class="eyebrow">Personalize o seu presente</div>
+   <h2>Deseja incluir algum adicional?</h2>
+   <p>Selecione os itens desejados abaixo para complementar sua cesta ou siga direto para o WhatsApp.</p>
+  </div>
+
+  <div class="addon-cards-wrapper">
+   
+   <!-- Adicional 1 -->
+   <div class="addon-item-card" onclick="toggleAddonCard(this, 'chk-balao')">
+    <div class="addon-img-large" style="background-image: url('adicional-balao.jpg');"></div>
+    <div class="addon-info">
+     <h4>Balão Personalizado</h4>
+     <p>Balão metalizado transparente/personalizado com nome ou frase curta.</p>
+     <div class="addon-price-tag">+ R$ 25,00</div>
+     <div class="addon-checkbox-wrapper">
+      <input type="checkbox" id="chk-balao" value="Balão Personalizado (+ R$ 25,00)" onclick="event.stopPropagation(); updateCardStyle(this)">
+      <span>Adicionar</span>
+     </div>
+    </div>
+   </div>
+
+   <!-- Adicional 2 -->
+   <div class="addon-item-card" onclick="toggleAddonCard(this, 'chk-caneca')">
+    <div class="addon-img-large" style="background-image: url('adicional-caneca.jpg');"></div>
+    <div class="addon-info">
+     <h4>Caneca Especial</h4>
+     <p>Caneca de cerâmica artesanal/personalizada para recordar diariamente.</p>
+     <div class="addon-price-tag">+ R$ 35,00</div>
+     <div class="addon-checkbox-wrapper">
+      <input type="checkbox" id="chk-caneca" value="Caneca Especial (+ R$ 35,00)" onclick="event.stopPropagation(); updateCardStyle(this)">
+      <span>Adicionar</span>
+     </div>
+    </div>
+   </div>
+
+   <!-- Adicional 3 -->
+   <div class="addon-item-card" onclick="toggleAddonCard(this, 'chk-flores')">
+    <div class="addon-img-large" style="background-image: url('adicional-flores.jpg');"></div>
+    <div class="addon-info">
+     <h4>Flores c/ Mini Fotos</h4>
+     <p>Arranjo de flores com minilaboratório de fotos polaroid integradas.</p>
+     <div class="addon-price-tag">+ R$ 45,00</div>
+     <div class="addon-checkbox-wrapper">
+      <input type="checkbox" id="chk-flores" value="Flores c/ Mini Fotos (+ R$ 45,00)" onclick="event.stopPropagation(); updateCardStyle(this)">
+      <span>Adicionar</span>
+     </div>
+    </div>
+   </div>
+
+  </div>
+
+  <div class="addon-footer-actions">
+   <button class="btn btn-outline" onclick="sendToWhatsApp(false)">Seguir Apenas com a Cesta</button>
+   <button class="btn btn-primary" onclick="sendToWhatsApp(true)">Concluir Pedido no WhatsApp ➔</button>
+  </div>
+
+ </div>
+</div>
+
 <section id="como">
  <div class="container">
   <div class="section-head"><h2>Como funciona</h2></div>
@@ -1042,7 +803,6 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </section>
 
-<!-- CITAÇÃO -->
 <section class="quote">
  <div class="container">
   <div class="section-head"><h2>Quem recebe, sente.</h2></div>
@@ -1050,7 +810,6 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
  <div class="container">
   <div class="section-head">
@@ -1073,7 +832,7 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
    </details>
    <details>
     <summary>Posso personalizar ou trocar algum item da cesta?</summary>
-    <p>Sim! Algumas opções podem ser personalizadas ou substituídas, sempre conforme a disponibilidade e as características da cesta. Dependendo da alteração, poderá haver um acréscimo no valor.<br><br>Também é possível adicionar itens especiais, como balões, xícaras e outros detalhes, mediante valor adicional. Consulte-nos para verificar as possibilidades e criar uma cesta ainda mais especial.</p>
+    <p>Sim! Algumas opções podem ser personalizadas ou substituídas, sempre conforme a disponibilidade e as características da cesta.</p>
    </details>
    <details>
     <summary>Como funciona a mensagem do cartão?</summary>
@@ -1083,7 +842,6 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </section>
 
-<!-- CTA FINAL -->
 <section class="final">
  <div class="container">
   <div class="eyebrow">Pronto para surpreender?</div>
@@ -1110,8 +868,9 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  💬 Falar no WhatsApp
 </a>
 
-<!-- JAVASCRIPT DAS GALERIAS, MODAIS E UPSELL -->
 <script>
+var selectedBoxName = "";
+
 function openModal(id) { 
   var modal = document.getElementById(id);
   if (modal) {
@@ -1120,12 +879,6 @@ function openModal(id) {
     var content = modal.querySelector('.modal-content');
     if (content) content.scrollTop = 0;
     document.body.style.overflow = 'hidden'; 
-    
-    // Reseta estado do upsell ao abrir modal
-    var upsell = document.getElementById('upsell-' + id);
-    if (upsell) upsell.classList.remove('active');
-    var triggerBtn = document.getElementById('btn-trigger-' + id.replace('modal-', ''));
-    if (triggerBtn) triggerBtn.style.display = 'block';
   }
 }
 
@@ -1144,47 +897,58 @@ function changeImage(containerId, imageUrl) {
   }
 }
 
-// Lógica para mostrar adicionais
-function showUpsell(modalId) {
-  var upsell = document.getElementById('upsell-' + modalId);
-  var btnTrigger = document.getElementById('btn-trigger-' + modalId.replace('modal-', ''));
-  if (upsell) upsell.classList.add('active');
-  if (btnTrigger) btnTrigger.style.display = 'none';
+/* Lógica da Janela de Adicionais */
+function openAddonModal(boxName) {
+  selectedBoxName = boxName;
+  
+  // Limpa seleções anteriores
+  var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]');
+  checkboxes.forEach(function(chk) {
+    chk.checked = false;
+    updateCardStyle(chk);
+  });
+
+  openModal('modal-adicionais');
 }
 
-// Atualização de Preço Total Dinâmico
-function updateTotalPrice(modalId, basePrice) {
-  var modal = document.getElementById(modalId);
-  var checkboxes = modal.querySelectorAll('input[type="checkbox"]:checked');
-  var total = basePrice;
-  checkboxes.forEach(function(cb) {
-    total += parseFloat(cb.getAttribute('data-price') || 0);
-  });
-  var priceElement = modal.querySelector('.price');
-  if (priceElement) {
-    priceElement.innerHTML = 'R$ ' + total.toFixed(2).replace('.', ',');
+function toggleAddonCard(cardElement, checkboxId) {
+  var checkbox = document.getElementById(checkboxId);
+  if (checkbox) {
+    checkbox.checked = !checkbox.checked;
+    updateCardStyle(checkbox);
   }
 }
 
-// Redirecionamento e construção da mensagem para o WhatsApp
-function sendOrder(boxName, basePrice, modalId, includeAddons) {
-  var phoneNumber = '5584996317328';
-  var message = "Olá! Gostaria de fazer o pedido da cesta: " + boxName + ".";
-  
-  if (includeAddons) {
-    var modal = document.getElementById(modalId);
-    var checkboxes = modal.querySelectorAll('input[type="checkbox"]:checked');
-    if (checkboxes.length > 0) {
-      var selectedAddons = [];
-      checkboxes.forEach(function(cb) {
-        selectedAddons.push(cb.value);
-      });
-      message += "\n\n*Gostaria de acrescentar os seguintes adicionais:*\n- " + selectedAddons.join("\n- ");
+function updateCardStyle(checkbox) {
+  var card = checkbox.closest('.addon-item-card');
+  if (card) {
+    if (checkbox.checked) {
+      card.classList.add('selected');
+    } else {
+      card.classList.remove('selected');
     }
   }
+}
+
+function sendToWhatsApp(includeAddons) {
+  var message = "Olá! Gostaria de fazer o pedido da cesta: " + selectedBoxName;
   
-  var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+  if (includeAddons) {
+    var selectedAddons = [];
+    var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]:checked');
+    
+    checkboxes.forEach(function(chk) {
+      selectedAddons.push(chk.value);
+    });
+
+    if (selectedAddons.length > 0) {
+      message += "\n\n*Adicionais escolhidos:*\n- " + selectedAddons.join("\n- ");
+    }
+  }
+
+  var whatsappUrl = "https://wa.me/5584996317328?text=" + encodeURIComponent(message);
   window.open(whatsappUrl, '_blank');
+  closeModal('modal-adicionais');
 }
 
 window.onclick = function(event) { 
