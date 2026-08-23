@@ -233,7 +233,7 @@ section{padding:60px 0}
 
 /* Footer */
 footer{background:#2d2925;color:#eee;padding:35px 0}
-.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.footer{display:flex;justify-space-between;gap:20px;flex-wrap:wrap;align-items:center}
 .footer p{color:#bdb3aa;font-size:12px;margin:4px 0}
 .footer a{color:#eee}
 .footer a:hover{color:var(--gold)}
@@ -470,6 +470,22 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </article>
 
+   <!-- Card 6: Café Te Amo -->
+   <article class="card">
+    <div class="photo" style="background-image: url('cafe-te-amo-capa.jpg');"></div>
+    <div class="cardbody">
+     <div class="tag">Celebração • Romance & Afeto</div>
+     <h3>Café Te Amo</h3>
+     <p>Uma proposta delicada e sofisticada, criada para presentear com elegância, afeto e um charmoso Bento Cake.</p>
+     <div class="details">Caixa Apresentação • Experiência Romântica</div>
+     <div class="price">R$ 280,00</div>
+     <div class="card-actions">
+      <button class="btn btn-outline" onclick="openModal('modal-te-amo')">Ver Detalhes</button>
+      <a class="btn btn-primary" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Te%20Amo." target="_blank" rel="noopener">Pedir</a>
+     </div>
+    </div>
+   </article>
+
   </div>
  </div>
 </section>
@@ -664,6 +680,44 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </ul>
     <div class="price">R$ 290,00</div>
     <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Cristal%20M." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- Modal 6: Café Te Amo -->
+<div class="modal-backdrop" id="modal-te-amo">
+ <div class="modal-content">
+  <button class="modal-close" onclick="closeModal('modal-te-amo')">&times;</button>
+  <h2>Café Te Amo</h2>
+  <div class="modal-grid">
+   <div>
+    <div class="modal-gallery-main" id="main-img-te-amo" style="background-image: url('cafe-te-amo-capa.jpg');"></div>
+    <div class="modal-gallery-thumbs">
+     <div class="modal-thumb" style="background-image: url('cafe-te-amo-capa.jpg');" onclick="changeImage('main-img-te-amo', 'cafe-te-amo-capa.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-te-amo-foto2.jpg');" onclick="changeImage('main-img-te-amo', 'cafe-te-amo-foto2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-te-amo-foto3.jpg');" onclick="changeImage('main-img-te-amo', 'cafe-te-amo-foto3.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-te-amo-foto4.jpg');" onclick="changeImage('main-img-te-amo', 'cafe-te-amo-foto4.jpg')"></div>
+    </div>
+   </div>
+   <div>
+    <p>Uma proposta delicada e sofisticada, criada para presentear com elegância. O Café Te Amo reúne uma seleção de sabores artesanais e um charmoso Bento Cake que torna a experiência ainda mais memorável. Perfeita para aniversários, celebrações e momentos cheios de afeto.</p>
+    <strong>O que está incluído nesta cesta:</strong>
+    <ul class="items-list">
+     <li>Charmoso Bento Cake decorado</li>
+     <li>Croissant folhado fresquinho</li>
+     <li>Waffles macios</li>
+     <li>Frutas frescas selecionadas</li>
+     <li>Geleia artesanal</li>
+     <li>Creme de avelã</li>
+     <li>Mel especial</li>
+     <li>Biscoitos especiais selecionados</li>
+     <li>Suco de fruta especial</li>
+     <li>Drip Coffee especial</li>
+     <li>Cartão personalizado com sua mensagem</li>
+    </ul>
+    <div class="price">R$ 280,00</div>
+    <a class="btn btn-primary" style="display:block; width:100%; text-align:center; margin-top:12px;" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20pedido%20da%20cesta%3A%20Caf%C3%A9%20Te%20Amo." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
    </div>
   </div>
  </div>
