@@ -540,6 +540,22 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
     </div>
    </article>
 
+   <!-- Card 7: Café Teens -->
+   <article class="card">
+    <div class="photo" style="background-image: url('cafe-teens-capa.jpg');"></div>
+    <div class="cardbody">
+     <div class="tag">Infanto-juvenil • Crianças & Teens</div>
+     <h3>Café Teens</h3>
+     <p>Uma proposta alegre, deliciosa e super divertida feita sob medida para encantar crianças e adolescentes em datas especiais.</p>
+     <div class="details">Bandeja em madeira Pinus • 20 × 20 cm</div>
+     <div class="price">R$ 220,00</div>
+     <div class="card-actions">
+      <button class="btn btn-outline" onclick="openModal('modal-teens')">Ver Detalhes</button>
+      <button class="btn btn-primary" onclick="openAddonModal('Café Teens')">Pedir</button>
+     </div>
+    </div>
+   </article>
+
   </div>
  </div>
 </section>
@@ -771,6 +787,44 @@ footer{background:#2d2925;color:#eee;padding:35px 0}
  </div>
 </div>
 
+<!-- Modal Café Teens -->
+<div class="modal-backdrop" id="modal-teens">
+ <div class="modal-content">
+  <button class="modal-close" onclick="closeModal('modal-teens')">&times;</button>
+  <h2>Café Teens</h2>
+  <div class="modal-grid">
+   <div>
+    <div class="modal-gallery-main" id="main-img-teens" style="background-image: url('cafe-teens-capa.jpg');"></div>
+    <div class="modal-gallery-thumbs">
+     <div class="modal-thumb" style="background-image: url('cafe-teens-capa.jpg');" onclick="changeImage('main-img-teens', 'cafe-teens-capa.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-teens-foto2.jpg');" onclick="changeImage('main-img-teens', 'cafe-teens-foto2.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-teens-foto3.jpg');" onclick="changeImage('main-img-teens', 'cafe-teens-foto3.jpg')"></div>
+     <div class="modal-thumb" style="background-image: url('cafe-teens-foto4.jpg');" onclick="changeImage('main-img-teens', 'cafe-teens-foto4.jpg')"></div>
+    </div>
+   </div>
+   <div>
+    <p>Uma proposta alegre, deliciosa e recheada com os itens favoritos do público jovem, montada em uma charmosa bandeja de pínus.</p>
+    <strong>O que está incluído nesta cesta:</strong>
+    <ul class="items-list">
+     <li>Bandeja artesanal em madeira Pinus (20x20cm)</li>
+     <li>Naked cake recheado artesanal</li>
+     <li>Croissant macio</li>
+     <li>Waffle tradicional</li>
+     <li>Donut colorido</li>
+     <li>Pote mini Nutella</li>
+     <li>Pães de queijo fresquinhos</li>
+     <li>Uvas frescas sem sementes</li>
+     <li>Morangos selecionados</li>
+     <li>Nescau (200ml)</li>
+     <li>Cartão personalizado com sua mensagem</li>
+    </ul>
+    <div class="price">R$ 220,00</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('modal-teens'); openAddonModal('Café Teens');">Avançar para Pedido</button>
+   </div>
+  </div>
+ </div>
+</div>
+
 <!-- JANELA / MODAL DE PEDIDO (ENTREGA + ADICIONAIS) -->
 <div class="modal-backdrop" id="modal-adicionais">
  <div class="modal-content addon-modal-content">
@@ -947,7 +1001,8 @@ var boxPrices = {
   "Café Luxo": 259.00,
   "Aniversário Caramelo": 380.00,
   "Café Cristal M": 290.00,
-  "Café Te Amo": 280.00
+  "Café Te Amo": 280.00,
+  "Café Teens": 220.00
 };
 
 var deliveryFee = 15.00;
