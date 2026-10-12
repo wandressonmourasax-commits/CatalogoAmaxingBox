@@ -1012,6 +1012,12 @@
         font-size: 19px
       }
 
+      .card-title{
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
       .card p {
         font-size: 12.5px
       }
@@ -1245,22 +1251,24 @@
             onclick="openModal('modal-individual')"></div>
           <div class="cardbody">
             <div class="tag">Café da manhã • Celebração Individual</div>
-            <h3>Café Individual</h3>
+            <div class="card-title">
+              <h3>Café Individual</h3>
+              <a href="#cafe-individual" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Individual', text: 'Confira esta cesta!', url: window.location.href + '#cafe-individual' }, 'modal-individual')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
+
             <p>Uma seleção delicada e saborosa, perfeita para celebrar com carinho e transformar a manhã de alguém
               especial.</p>
-
-            <a href="#cafe-individual" class="share-action" id="share-button" onclick="shareButton({ title: 'Café Individual', text: 'Confira esta cesta!', url: window.location.href + '#cafe-individual' }, 'modal-individual')">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true">
-                <circle cx="18" cy="5" r="3" />
-                <circle cx="6" cy="12" r="3" />
-                <circle cx="18" cy="19" r="3" />
-                <path d="m8.7 10.7 6.6-4.4" />
-                <path d="m8.7 13.3 6.6 4.4" />
-              </svg>
-            </a>
-
             <div class="details">Caixa Apresentação • Porção Individual</div>
             <div class="price">R$ 169,00</div>
             <div class="card-actions">
@@ -1276,7 +1284,21 @@
             onclick="openModal('modal-familia')"></div>
           <div class="cardbody">
             <div class="tag">Café da manhã • Para compartilhar</div>
-            <h3>Café Família</h3>
+            <div class="card-title">
+              <h3>Café Família</h3>
+              <a href="#cafe-familia" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Família', text: 'Confira esta cesta!', url: window.location.href + '#cafe-familia' }, 'modal-familia')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
             <p>Uma seleção generosa de sabores doces e salgados em uma charmosa bandeja de madeira Pinus.</p>
             <div class="details">Bandeja em madeira Pinus • 35 × 25 cm</div>
             <div class="price">R$ 319,00</div>
@@ -1293,7 +1315,21 @@
           </div>
           <div class="cardbody">
             <div class="tag">Café da manhã • Experiência premium</div>
-            <h3>Café Luxo</h3>
+            <div class="card-title">
+              <h3>Café Luxo</h3>
+              <a href="#cafe-luxo" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Luxo', text: 'Confira esta cesta!', url: window.location.href + '#cafe-luxo' }, 'modal-luxo')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
             <p>Uma seleção especial de sabores doces e salgados apresentada em uma elegante maleta cartonada.</p>
             <div class="details">Maleta luxo cartonada • 20 × 30 cm</div>
             <div class="price">R$ 259,00</div>
@@ -1310,7 +1346,21 @@
             onclick="openModal('modal-caramelo')"></div>
           <div class="cardbody">
             <div class="tag">Aniversário • Celebração Individual</div>
-            <h3>Café Especial de Aniversário</h3>
+            <div class="card-title">
+              <h3>Café Especial de Aniversário</h3>
+              <a href="#cafe-especial-aniversario" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Especial de Aniversário', text: 'Confira esta cesta!', url: window.location.href + '#cafe-especial-aniversario' }, 'modal-caramelo')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
             <p>Uma experiência elegante e completa. Traz a sofisticação do bolo recheado em uma exclusiva bandeja
               estruturada em couro sintético.</p>
             <div class="details">Bandeja em Couro Sintético • Naked Cake</div>
@@ -1327,8 +1377,22 @@
           <div class="photo" style="background-image: url('elegance-capa.jpg');" onclick="openModal('modal-elegance')">
           </div>
           <div class="cardbody">
+            <div class="card-title">
+              <h3>Café Cristal M</h3>
+              <a href="#cafe-cristal-m" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Cristal M', text: 'Confira esta cesta!', url: window.location.href + '#cafe-cristal-m' }, 'modal-elegance')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
             <div class="tag">Café da manhã • Alta Gastronomia</div>
-            <h3>Café Cristal M</h3>
             <p>Uma proposta sofisticada e refinada, cuidadosamente montada em uma elegante base de acrílico.</p>
             <div class="details">Base em Acrílico • 25 × 25 cm</div>
             <div class="price">R$ 290,00</div>
@@ -1345,7 +1409,21 @@
           </div>
           <div class="cardbody">
             <div class="tag">Celebração • Romance & Afeto</div>
-            <h3>Café Te Amo</h3>
+            <div class="card-title">
+              <h3>Café Te Amo</h3>
+              <a href="#cafe-te-amo" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Te Amo', text: 'Confira esta cesta!', url: window.location.href + '#cafe-te-amo' }, 'modal-te-amo')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
             <p>Uma proposta delicada e sofisticada, criada para presentear com elegância, afeto e um charmoso Bento
               Cake.</p>
             <div class="details">Caixa Apresentação • Experiência Romântica</div>
@@ -1363,7 +1441,21 @@
           </div>
           <div class="cardbody">
             <div class="tag">Infanto-juvenil • Crianças & Teens</div>
-            <h3>Café Kids/Teens</h3>
+            <div class="card-title">
+              <h3>Café Kids/Teens</h3>
+              <a href="#cafe-teens" class="share-action" id="share-button"
+                onclick="shareButton({ title: 'Café Kids/Teens', text: 'Confira esta cesta!', url: window.location.href + '#cafe-teens' }, 'modal-teens')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.7 10.7 6.6-4.4" />
+                  <path d="m8.7 13.3 6.6 4.4" />
+                </svg>
+              </a>
+            </div>
             <p>Uma proposta alegre, deliciosa e super divertida feita sob medida para encantar crianças e adolescentes
               em datas especiais.</p>
             <div class="details">Bandeja em madeira Pinus • 20 × 20 cm</div>
@@ -2047,7 +2139,7 @@
       if (navigator.share) {
         try {
           const newUrl = new URL(shareData.url);
-          if(modalId) {
+          if (modalId) {
             newUrl.searchParams.set('modal-id', modalId);
           }
           shareData.url = newUrl.toString();
