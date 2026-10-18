@@ -354,6 +354,7 @@
       background-position: center;
       background-repeat: no-repeat;
       border-bottom: 1px solid var(--line);
+      cursor: pointer;
     }
 
     .cardbody {
@@ -374,6 +375,13 @@
     .card h3 {
       font-size: 22px;
       margin: 6px 0
+    }
+
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
     }
 
     .card p {
@@ -485,6 +493,14 @@
 
     .modal-close:hover {
       color: var(--ink)
+    }
+
+    .modal-title {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
     }
 
     .modal-grid {
@@ -892,6 +908,24 @@
       transform: scale(1.04)
     }
 
+    .share-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background-color: #ffffff;
+      color: var(--brown);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .share-action:hover {
+      background-color: #faf6f0;
+      border-color: var(--gold);
+    }
+
     @media(max-width:1024px) {
       .product-grid {
         grid-template-columns: repeat(2, 1fr)
@@ -1103,13 +1137,12 @@
         border-radius: 6px;
       }
 
-      .modal-title{
+      .modal-title {
         display: flex;
         justify-content: flex-start;
         flex-direction: row;
         gap: 6px;
         align-items: baseline;
-
       }
 
       .items-list {
@@ -1126,62 +1159,6 @@
       .addon-footer-actions .btn {
         width: 100%;
       }
-
-
-      .share-action {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-
-        padding: 10px 16px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-
-        background-color: #ffffff;
-        color: #374151;
-
-        font-family: inherit;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.5;
-        text-decoration: none;
-
-        cursor: pointer;
-        transition:
-          background-color 0.2s ease,
-          border-color 0.2s ease,
-          color 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-
-      .share-action:hover {
-        background-color: #f3f4f6;
-        border-color: #9ca3af;
-        color: #111827;
-      }
-
-      .share-action:focus-visible {
-        outline: 2px solid #2563eb;
-        outline-offset: 3px;
-      }
-
-      .share-action:active {
-        background-color: #e5e7eb;
-        transform: translateY(1px);
-      }
-
-      .share-action:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .share-action {
-          transition: none;
-        }
-      }
-
     }
   </style>
 </head>
@@ -1262,8 +1239,8 @@
             <div class="tag">Café da manhã • Celebração Individual</div>
             <div class="card-title">
               <h3>Café Individual</h3>
-              <a href="#cafe-individual" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Individual', text: 'Confira esta cesta!', url: window.location.href + '#cafe-individual' }, 'modal-individual')">
+              <a href="#cafe-individual" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Individual', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#cafe-individual' }, 'modal-individual')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
@@ -1294,8 +1271,8 @@
             <div class="tag">Café da manhã • Para compartilhar</div>
             <div class="card-title">
               <h3>Café Família</h3>
-              <a href="#cafe-familia" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Família', text: 'Confira esta cesta!', url: window.location.href + '#cafe-familia' }, 'modal-familia')">
+              <a href="#cafe-familia" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Família', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#cafe-familia' }, 'modal-familia')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
@@ -1324,8 +1301,8 @@
             <div class="tag">Café da manhã • Experiência premium</div>
             <div class="card-title">
               <h3>Café Luxo</h3>
-              <a href="#cafe-luxo" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Luxo', text: 'Confira esta cesta!', url: window.location.href + '#cafe-luxo' }, 'modal-luxo')">
+              <a href="#cafe-luxo" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Luxo', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#cafe-luxo' }, 'modal-luxo')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
@@ -1346,7 +1323,7 @@
           </div>
         </article>
 
-        <!-- Card 4 -->
+        <!-- Card 4 (Ajustado o parâmetro para 'Café Especial de Aniversário') -->
         <article class="card" id="aniversario-caramelo">
           <div class="photo" style="background-image: url('aniversario-caramelo-capa.jpg');"
             onclick="openModal('modal-caramelo')"></div>
@@ -1354,8 +1331,8 @@
             <div class="tag">Aniversário • Celebração Individual</div>
             <div class="card-title">
               <h3>Café Especial de Aniversário</h3>
-              <a href="#cafe-especial-aniversario" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Especial de Aniversário', text: 'Confira esta cesta!', url: window.location.href + '#cafe-especial-aniversario' }, 'modal-caramelo')">
+              <a href="#aniversario-caramelo" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Especial de Aniversário', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#aniversario-caramelo' }, 'modal-caramelo')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
@@ -1382,10 +1359,11 @@
           <div class="photo" style="background-image: url('elegance-capa.jpg');" onclick="openModal('modal-elegance')">
           </div>
           <div class="cardbody">
+            <div class="tag">Café da manhã • Alta Gastronomia</div>
             <div class="card-title">
               <h3>Café Cristal M</h3>
-              <a href="#cafe-cristal-m" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Cristal M', text: 'Confira esta cesta!', url: window.location.href + '#cafe-cristal-m' }, 'modal-elegance')">
+              <a href="#cafe-elegance" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Cristal M', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#cafe-elegance' }, 'modal-elegance')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
@@ -1396,7 +1374,6 @@
                 </svg>
               </a>
             </div>
-            <div class="tag">Café da manhã • Alta Gastronomia</div>
             <p>Uma proposta sofisticada e refinada, cuidadosamente montada em uma elegante base de acrílico.</p>
             <div class="details">Base em Acrílico • 25 × 25 cm</div>
             <div class="price">R$ 290,00</div>
@@ -1415,8 +1392,8 @@
             <div class="tag">Celebração • Romance & Afeto</div>
             <div class="card-title">
               <h3>Café Te Amo</h3>
-              <a href="#cafe-te-amo" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Te Amo', text: 'Confira esta cesta!', url: window.location.href + '#cafe-te-amo' }, 'modal-te-amo')">
+              <a href="#cafe-te-amo" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Te Amo', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#cafe-te-amo' }, 'modal-te-amo')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
@@ -1446,832 +1423,10 @@
             <div class="tag">Infanto-juvenil • Crianças & Teens</div>
             <div class="card-title">
               <h3>Café Kids/Teens</h3>
-              <a href="#cafe-teens" class="share-action" id="share-button"
-                onclick="shareButton({ title: 'Café Kids/Teens', text: 'Confira esta cesta!', url: window.location.href + '#cafe-teens' }, 'modal-teens')">
+              <a href="#cafe-teens" class="share-action"
+                onclick="event.preventDefault(); shareButton({ title: 'Café Kids/Teens', text: 'Confira esta cesta da Amazing Box!', url: window.location.origin + window.location.pathname + '#cafe-teens' }, 'modal-teens')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                   stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="18" cy="5" r="3" />
                   <circle cx="6" cy="12" r="3" />
-                  <circle cx="18" cy="19" r="3" />
-                  <path d="m8.7 10.7 6.6-4.4" />
-                  <path d="m8.7 13.3 6.6 4.4" />
-                </svg>
-              </a>
-            </div>
-            <p>Uma proposta alegre, deliciosa e super divertida feita sob medida para encantar crianças e adolescentes
-              em datas especiais.</p>
-            <div class="details">Bandeja em madeira Pinus • 20 × 20 cm</div>
-            <div class="price">R$ 200,00</div>
-            <div class="card-actions">
-              <button class="btn btn-outline" onclick="openModal('modal-teens')">Ver Detalhes</button>
-              <button class="btn btn-primary" onclick="openAddonModal('Café Teens')">Pedir</button>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAIS DE DETALHES DE CADA CESTA -->
-
-  <div class="modal-backdrop" id="modal-individual">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-individual')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Individual</h2>
-        <a href="#cafe-individual"
-          onclick="shareButton({ title: 'Café Individual', text: 'Confira esta cesta!', url: window.location.href + '#cafe-individual' }, 'modal-individual')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a>
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-individual"
-            style="background-image: url('cafe-individual-capa.jpg');"></div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('cafe-individual-capa.jpg');"
-              onclick="changeImage('main-img-individual', 'cafe-individual-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-individual-foto2.jpg');"
-              onclick="changeImage('main-img-individual', 'cafe-individual-foto2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-individual-foto3.jpg');"
-              onclick="changeImage('main-img-individual', 'cafe-individual-foto3.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-individual-foto4.jpg');"
-              onclick="changeImage('main-img-individual', 'cafe-individual-foto4.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-individual-foto5.jpg');"
-              onclick="changeImage('main-img-individual', 'cafe-individual-foto5.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-individual-foto6.jpg');"
-              onclick="changeImage('main-img-individual', 'cafe-individual-foto6.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>Uma cesta de café da manhã pensada para uma pessoa, com uma seleção delicada, elegante e extremamente
-            saborosa.</p>
-          <strong>O que está incluído nesta cesta:</strong>
-          <ul class="items-list">
-            <li>Flor de lombo canadense</li>
-            <li>Queijo muçarela delicadamente cortado em formato de coração</li>
-            <li>Uvas frescas sem sementes</li>
-            <li>Morangos selecionados</li>
-            <li>Suco de laranja 200 ml</li>
-            <li>Croissant folhado tradicional</li>
-            <li>Waffle macio tradicional artesanal</li>
-            <li>Drip Coffee especial</li>
-            <li>Bolinho caseiro com generosa cobertura de chocolate</li>
-            <li>Pães de queijo com recheio de Catupiry</li>
-            <li>Cartão personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 169,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-individual'); openAddonModal('Café Individual');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-familia">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-familia')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Família</h2>
-        <a href="#cafe-familia"
-          onclick="shareButton({ title: 'Café Família', text: 'Confira esta cesta!', url: window.location.href + '#cafe-familia' }, 'modal-familia')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a> 
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-familia" style="background-image: url('cafe-familia-capa.jpg');">
-          </div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('cafe-familia-capa.jpg');"
-              onclick="changeImage('main-img-familia', 'cafe-familia-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe1.jpg');"
-              onclick="changeImage('main-img-familia', 'cafe-familia-detalhe1.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe2.jpg');"
-              onclick="changeImage('main-img-familia', 'cafe-familia-detalhe2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-familia-detalhe3.jpg');"
-              onclick="changeImage('main-img-familia', 'cafe-familia-detalhe3.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>A experiência ideal para ser compartilhada em família ou a dois com muita variedade e charme.</p>
-          <strong>O que está incluído nesta cesta:</strong>
-          <ul class="items-list">
-            <li>Bandeja em madeira Pinus (35x25cm)</li>
-            <li>Cafés Drip Coffee Baggio (2 sachês)</li>
-            <li>Caneca personalizável com letra inicial</li>
-            <li>Bolo vulcão artesanal de chocolate</li>
-            <li>Croissants e pães artesanais</li>
-            <li>Frutas frescas selecionadas</li>
-            <li>Waffle</li>
-            <li>Stroopwafel</li>
-            <li>Iogurte natural</li>
-            <li>Requeijão</li>
-            <li>Bebida Starbucks</li>
-            <li>Flor de Salame</li>
-            <li>Castanhas</li>
-            <li>Queijo muçarela</li>
-            <li>Geleia artesanal</li>
-            <li>Cartão personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 319,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-familia'); openAddonModal('Café Família');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-luxo">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-luxo')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Luxo</h2>
-        <a href="#cafe-luxo"
-          onclick="shareButton({ title: 'Café Luxo', text: 'Confira esta cesta!', url: window.location.href + '#cafe-luxo' }, 'modal-luxo')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a>
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-luxo" style="background-image: url('cafe-luxo-capa.jpg');"></div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('cafe-luxo-capa.jpg');"
-              onclick="changeImage('main-img-luxo', 'cafe-luxo-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe1.jpg');"
-              onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe1.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe2.jpg');"
-              onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe3.jpg');"
-              onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe3.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe4.jpg');"
-              onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe4.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-luxo-detalhe5.jpg');"
-              onclick="changeImage('main-img-luxo', 'cafe-luxo-detalhe5.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>Uma experiência intimista, charmosa e extremamente sofisticada para surpreender quem você ama.</p>
-          <strong>O que está incluído nesta cesta:</strong>
-          <ul class="items-list">
-            <li>Maleta rígida luxo cartonada especial (20x30cm)</li>
-            <li>Croissants</li>
-            <li>Quiche</li>
-            <li>Flor de Salame</li>
-            <li>Queijo muçarela</li>
-            <li>Cappuccino especial cremoso</li>
-            <li>Doce de leite</li>
-            <li>Frutas frescas selecionadas</li>
-            <li>Bombom Ferrero Rocher</li>
-            <li>Caneca personalizável com letra inicial</li>
-            <li>Suco integral de uva</li>
-            <li>Geleia artesanal</li>
-            <li>Cartão personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 259,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-luxo'); openAddonModal('Café Luxo');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-caramelo">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-caramelo')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Especial de Aniversário</h2>
-        <a href="#cafe-caramelo"
-          onclick="shareButton({ title: 'Café Especial de Aniversário', text: 'Confira esta cesta!', url: window.location.href + '#cafe-caramelo' }, 'modal-caramelo')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a>
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-caramelo"
-            style="background-image: url('aniversario-caramelo-capa.jpg');"></div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('aniversario-caramelo-capa.jpg');"
-              onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto2.jpg');"
-              onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto3.jpg');"
-              onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto3.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto4.jpg');"
-              onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto4.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto5.jpg');"
-              onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto5.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('aniversario-caramelo-foto6.jpg');"
-              onclick="changeImage('main-img-caramelo', 'aniversario-caramelo-foto6.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>Uma proposta elegante, sofisticada e completa em caixa estruturada de couro sintético com alças.</p>
-          <strong>O que está incluído nesta cesta:</strong>
-          <ul class="items-list">
-            <li>Caixa estruturada em couro sintético com alças</li>
-            <li>Bolo com recheio duplo e cobertura de brigadeiro</li>
-            <li>Suco de laranja 300 ml</li>
-            <li>Pão baguete artesanal e croissants</li>
-            <li>Waffle</li>
-            <li>Drip Coffee</li>
-            <li>Mel de abelha</li>
-            <li>Iogurte natural com geleia de morango</li>
-            <li>Morangos</li>
-            <li>Uvas sem sementes</li>
-            <li>Kiwi</li>
-            <li>Geleia artesanal de morango</li>
-            <li>Cartão de felicitações personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 269,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-caramelo'); openAddonModal('Aniversário Caramelo');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-elegance">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-elegance')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Cristal M</h2>
-        <a href="#cafe-elegance"
-          onclick="shareButton({ title: 'Café Cristal M', text: 'Confira esta cesta!', url: window.location.href + '#cafe-elegance' }, 'modal-elegance')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a>
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-elegance" style="background-image: url('elegance-capa.jpg');">
-          </div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('elegance-capa.jpg');"
-              onclick="changeImage('main-img-elegance', 'elegance-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('elegance-foto2.jpg');"
-              onclick="changeImage('main-img-elegance', 'elegance-foto2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('elegance-foto3.jpg');"
-              onclick="changeImage('main-img-elegance', 'elegance-foto3.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('elegance-foto4.jpg');"
-              onclick="changeImage('main-img-elegance', 'elegance-foto4.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('elegance-foto5.jpg');"
-              onclick="changeImage('main-img-elegance', 'elegance-foto5.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('elegance-foto6.jpg');"
-              onclick="changeImage('main-img-elegance', 'elegance-foto6.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>Uma proposta refinada de café da manhã, cuidadosamente montada em uma elegante base de acrílico.</p>
-          <strong>O que está incluído nesta experiência:</strong>
-          <ul class="items-list">
-            <li>Elegante base de acrílico (25x25cm)</li>
-            <li>Suco de laranja natural 300 ml</li>
-            <li>Potiche de vidro com geleia artesanal de morango</li>
-            <li>Mel de abelha</li>
-            <li>Castanhas caramelizadas selecionadas</li>
-            <li>Frutas frescas (morangos e uvas sem sementes)</li>
-            <li>Bento Cake festivo</li>
-            <li>Flores artesanais de salame, lombo canadense e queijo muçarela</li>
-            <li>Croissant folhado tradicional</li>
-            <li>Pão baguete artesanal</li>
-            <li>Stroopwafel holandês tradicional</li>
-            <li>Waffle</li>
-            <li>Pão de queijo recheado com Catupiry</li>
-            <li>Quiche salgada</li>
-            <li>Drip Coffee especial</li>
-            <li>Bombom Ferrero Rocher</li>
-            <li>Cartão personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 290,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-elegance'); openAddonModal('Café Cristal M');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-te-amo">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-te-amo')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Te Amo</h2>
-        <a href="#cafe-te-amo"
-          onclick="shareButton({ title: 'Café Te Amo', text: 'Confira esta cesta!', url: window.location.href + '#cafe-te-amo' }, 'modal-te-amo')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a>
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-te-amo" style="background-image: url('cafe-te-amo-capa.jpg');">
-          </div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('cafe-te-amo-capa.jpg');"
-              onclick="changeImage('main-img-te-amo', 'cafe-te-amo-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-te-amo-foto2.jpg');"
-              onclick="changeImage('main-img-te-amo', 'cafe-te-amo-foto2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-te-amo-foto3.jpg');"
-              onclick="changeImage('main-img-te-amo', 'cafe-te-amo-foto3.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-te-amo-foto4.jpg');"
-              onclick="changeImage('main-img-te-amo', 'cafe-te-amo-foto4.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>Uma proposta delicada e sofisticada, criada para presentear com elegância e um charmoso Bento Cake.</p>
-          <strong>O que está incluído nesta cesta:</strong>
-          <ul class="items-list">
-            <li>Charmoso Bento Cake decorado</li>
-            <li>Croissant folhado tradicional</li>
-            <li>Waffles</li>
-            <li>Torradinhas</li>
-            <li>Morangos</li>
-            <li>Uvas sem sementes</li>
-            <li>Geleia artesanal</li>
-            <li>Creme de avelã</li>
-            <li>Geleia de morango artesanal</li>
-            <li>Stroopwafel</li>
-            <li>Suco de uva integral 300 ml</li>
-            <li>Drip Coffee especial</li>
-            <li>Cartão personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 280,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-te-amo'); openAddonModal('Café Te Amo');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-teens">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-teens')">&times;</button>
-      <div class="modal-title">
-        <h2>Café Teens</h2>
-        <a href="#cafe-teens"
-          onclick="shareButton({ title: 'Café Teens', text: 'Confira esta cesta!', url: window.location.href + '#cafe-teens' }, 'modal-teens')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="#b08a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="m8.7 10.7 6.6-4.4" />
-            <path d="m8.7 13.3 6.6 4.4" />
-          </svg>
-        </a>
-      </div>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-gallery-main" id="main-img-teens" style="background-image: url('cafe-teens-capa.jpg');">
-          </div>
-          <div class="modal-gallery-thumbs">
-            <div class="modal-thumb" style="background-image: url('cafe-teens-capa.jpg');"
-              onclick="changeImage('main-img-teens', 'cafe-teens-capa.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-teens-foto2.jpg');"
-              onclick="changeImage('main-img-teens', 'cafe-teens-foto2.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-teens-foto3.jpg');"
-              onclick="changeImage('main-img-teens', 'cafe-teens-foto3.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-teens-foto4.jpg');"
-              onclick="changeImage('main-img-teens', 'cafe-teens-foto4.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-teens-foto5.jpg');"
-              onclick="changeImage('main-img-teens', 'cafe-teens-foto5.jpg')"></div>
-            <div class="modal-thumb" style="background-image: url('cafe-teens-foto6.jpg');"
-              onclick="changeImage('main-img-teens', 'cafe-teens-foto6.jpg')"></div>
-          </div>
-        </div>
-        <div>
-          <p>Uma proposta alegre, deliciosa e recheada com os itens favoritos do público jovem, montada em uma charmosa
-            bandeja de pínus.</p>
-          <strong>O que está incluído nesta cesta:</strong>
-          <ul class="items-list">
-            <li>Bandeja artesanal em madeira Pinus (20x20cm)</li>
-            <li>Naked cake recheado com cobertura de brigadeiro</li>
-            <li>Croissant tradicional</li>
-            <li>Waffle</li>
-            <li>Donuts colorido</li>
-            <li>Pote mini Nutella</li>
-            <li>Pães de queijo com recheio de Catupiry</li>
-            <li>Uvas frescas sem sementes</li>
-            <li>Mini coxinhas</li>
-            <li>Morangos selecionados</li>
-            <li>Nescau 300ml</li>
-            <li>Cartão personalizado com sua mensagem</li>
-          </ul>
-          <div class="price">R$ 200,00</div>
-          <button class="btn btn-primary" style="width:100%;"
-            onclick="closeModal('modal-teens'); openAddonModal('Café Teens');">Avançar para Pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- JANELA / MODAL DE PEDIDO (ENTREGA + ADICIONAIS) -->
-  <div class="modal-backdrop" id="modal-adicionais">
-    <div class="modal-content addon-modal-content">
-      <button class="modal-close" onclick="closeModal('modal-adicionais')">&times;</button>
-
-      <div class="addon-title-box">
-        <div class="eyebrow">Personalize o seu pedido</div>
-        <h2>Opções de Envio e Adicionais</h2>
-        <p>Selecione como deseja receber seu pedido e escolha adicionais para surpreender ainda mais.</p>
-      </div>
-
-      <!-- PASSO 1: ENTREGA OU RETIRADA -->
-      <div class="delivery-option-block">
-        <div class="delivery-option-title">📍 Como prefere receber a sua cesta?</div>
-        <div class="delivery-radio-group">
-
-          <label class="radio-card selected" id="card-radio-entrega" onclick="selectDeliveryOption('entrega')">
-            <input type="radio" name="delivery_type" id="radio-entrega" value="entrega" checked>
-            <div class="radio-card-text">
-              🚗 Quero que entregue
-              <small>Área urbana de Caicó (entrega de carro) • R$ 15,00</small>
-            </div>
-          </label>
-
-          <label class="radio-card" id="card-radio-retirada" onclick="selectDeliveryOption('retirada')">
-            <input type="radio" name="delivery_type" id="radio-retirada" value="retirada">
-            <div class="radio-card-text">
-              🛍️ Quero Fazer Retirada
-              <small>Retire diretamente em nosso endereço</small>
-            </div>
-          </label>
-
-        </div>
-      </div>
-
-      <!-- PASSO 2: SELEÇÃO DE ADICIONAIS -->
-      <div class="addon-section-title">✨ Deseja incluir algum adicional especial? (Opcional)</div>
-      <div class="addon-cards-wrapper">
-
-        <!-- Adicional Único Provisório: Balão Personalizado (Atualizado para R$ 35,00) -->
-        <div class="addon-item-card" onclick="toggleAddonCard(this, 'chk-balao')">
-          <div class="addon-img-large" style="background-image: url('adicional-balao.jpg');"></div>
-          <div class="addon-info">
-            <h4>Balão Personalizado</h4>
-            <p>Balão metalizado transparente/personalizado com nome ou frase curta.</p>
-            <div class="addon-price-tag">+ R$ 35,00</div>
-            <div class="addon-checkbox-wrapper">
-              <input type="checkbox" id="chk-balao" data-name="Balão Personalizado" data-price="35"
-                onclick="event.stopPropagation(); updateCardStyle(this)">
-              <span>Adicionar</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="addon-footer-actions">
-        <button class="btn btn-primary" onclick="sendToWhatsApp()">Concluir Pedido no WhatsApp ➔</button>
-      </div>
-
-    </div>
-  </div>
-
-  <section id="como">
-    <div class="container">
-      <div class="section-head">
-        <h2>Como funciona</h2>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="num">01</div>
-          <h3>Escolha</h3>
-          <p>Encontre a Box que combina com o seu momento.</p>
-        </div>
-        <div class="step">
-          <div class="num">02</div>
-          <h3>Agende</h3>
-          <p>Confirme data, horário e endereço da entrega.</p>
-        </div>
-        <div class="step">
-          <div class="num">03</div>
-          <h3>Surpreenda</h3>
-          <p>Nós cuidamos da preparação e da entrega.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="quote">
-    <div class="container">
-      <div class="section-head">
-        <h2>Quem recebe, sente.</h2>
-      </div>
-      <blockquote>“Um presente bonito é lembrado. Um momento especial é guardado.”</blockquote>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Dúvidas comuns</div>
-        <h2>Perguntas Frequentes</h2>
-        <p>Tudo o que você precisa saber para fazer seu pedido com tranquilidade.</p>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>Com quanta antecedência devo fazer o pedido?</summary>
-          <p>Recomendamos realizar o pedido com pelo menos 24h a 48h de antecedência para garantir a disponibilidade do
-            horário de entrega e o frescor de todos os itens artesanais.</p>
-        </details>
-        <details>
-          <summary>Quais são os horários de entrega?</summary>
-          <p>Realizamos entregas matinais para café da manhã e também em horários específicos ao longo do dia
-            previamente combinados no momento do pedido.</p>
-        </details>
-        <details>
-          <summary>Vocês entregam em toda a cidade de Caicó?</summary>
-          <p>Sim! Entregamos em toda a área urbana de Caicó de carro (taxa de R$ 15,00). Para áreas rurais ou municípios
-            vizinhos, consulte a taxa e disponibilidade pelo WhatsApp.</p>
-        </details>
-        <details>
-          <summary>Posso personalizar ou trocar algum item da cesta?</summary>
-          <p>Sim! Algumas opções podem ser personalizadas ou substituídas, sempre conforme a disponibilidade e as
-            características da cesta.</p>
-        </details>
-        <details>
-          <summary>Como funciona a mensagem do cartão?</summary>
-          <p>Você pode nos enviar o texto desejado pelo WhatsApp após escolher a box. Nós imprimimos/escrevemos com todo
-            o carinho em um cartão especial incluído na experiência.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="final">
-    <div class="container">
-      <div class="eyebrow">Pronto para surpreender?</div>
-      <h2>Faça seu pedido hoje.</h2>
-      <p>Entre em contato pelo WhatsApp e garanta a sua Amazing Box para uma data especial.</p>
-      <a class="primary"
-        href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20as%20boxes."
-        target="_blank" rel="noopener">Falar no WhatsApp</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer">
-      <div>
-        <div class="logo-text">AMAZING BOX<small>CAICÓ • RN</small></div>
-        <p>Presentes que transformam momentos em memórias.</p>
-      </div>
-      <div>
-        <p><a href="#quem-somos">Quem Somos</a> • <a href="#boxes">Boxes</a> • <a href="#faq">FAQ</a></p>
-        <p>© 2026 Amazing Box. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
-
-  <a class="float" href="https://wa.me/5584996317328?text=Ol%C3%A1%21%20Vi%20o%20cat%C3%A1logo%20da%20Amazing%20Box."
-    target="_blank" rel="noopener">
-    💬 Falar no WhatsApp
-  </a>
-
-  <script>
-    var selectedBoxName = "";
-
-    // Preços base das cestas (Sincronizados com o catálogo)
-    var boxPrices = {
-      "Café Individual": 169.00,
-      "Café Família": 319.00,
-      "Café Luxo": 259.00,
-      "Aniversário Caramelo": 269.00,
-      "Café Cristal M": 290.00,
-      "Café Te Amo": 280.00,
-      "Café Teens": 200.00
-    };
-
-    var deliveryFee = 15.00;
-
-    function openModal(modalId) {
-      var modal = document.getElementById(modalId);
-      console.log("Abrindo modal:", modalId, modal);
-      if (modal) {
-        modal.classList.add('active');
-        modal.scrollTop = 0;
-        var content = modal.querySelector('.modal-content');
-        if (content) content.scrollTop = 0;
-        document.body.style.overflow = 'hidden';
-        // location.hash = document.getElementById('section1').id;
-      }
-
-    }
-
-    function openModalWithComponent(modalId, componentId) {
-      openModal(modalId);
-      if (componentId) {
-        var component = document.getElementById(componentId);
-        // location.hash = document.getElementById('section1').id;
-        if (component) {
-          component.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-
-    function closeModal(id) {
-      var modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    function changeImage(containerId, imageUrl) {
-      var container = document.getElementById(containerId);
-      if (container) {
-        container.style.backgroundImage = "url('" + imageUrl + "')";
-      }
-    }
-
-    /* Lógica da Janela de Adicionais e Entrega */
-    function openAddonModal(boxName) {
-      selectedBoxName = boxName;
-
-      // Reseta para a opção Entrega como padrão
-      selectDeliveryOption('entrega');
-
-      // Limpa seleções de adicionais
-      var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]');
-      checkboxes.forEach(function (chk) {
-        chk.checked = false;
-        updateCardStyle(chk);
-      });
-
-      openModal('modal-adicionais');
-    }
-
-    function selectDeliveryOption(type) {
-      var radioEntrega = document.getElementById('radio-entrega');
-      var radioRetirada = document.getElementById('radio-retirada');
-      var cardEntrega = document.getElementById('card-radio-entrega');
-      var cardRetirada = document.getElementById('card-radio-retirada');
-
-      if (type === 'entrega') {
-        radioEntrega.checked = true;
-        cardEntrega.classList.add('selected');
-        cardRetirada.classList.remove('selected');
-      } else {
-        radioRetirada.checked = true;
-        cardRetirada.classList.add('selected');
-        cardEntrega.classList.remove('selected');
-      }
-    }
-
-    function toggleAddonCard(cardElement, checkboxId) {
-      var checkbox = document.getElementById(checkboxId);
-      if (checkbox) {
-        checkbox.checked = !checkbox.checked;
-        updateCardStyle(checkbox);
-      }
-    }
-
-    function updateCardStyle(checkbox) {
-      var card = checkbox.closest('.addon-item-card');
-      if (card) {
-        if (checkbox.checked) {
-          card.classList.add('selected');
-        } else {
-          card.classList.remove('selected');
-        }
-      }
-    }
-
-    function formatCurrency(val) {
-      return "R$ " + val.toFixed(2).replace(".", ",");
-    }
-
-    function sendToWhatsApp() {
-      var deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
-      var isDelivery = (deliveryType === 'entrega');
-
-      var boxPrice = boxPrices[selectedBoxName] || 0;
-      var currentDeliveryPrice = isDelivery ? deliveryFee : 0;
-      var totalAddonsPrice = 0;
-
-      var selectedAddonsText = [];
-      var checkboxes = document.querySelectorAll('#modal-adicionais input[type="checkbox"]:checked');
-
-      checkboxes.forEach(function (chk) {
-        var name = chk.getAttribute('data-name');
-        var price = parseFloat(chk.getAttribute('data-price')) || 0;
-        totalAddonsPrice += price;
-        selectedAddonsText.push(name + " (" + formatCurrency(price) + ")");
-      });
-
-      var grandTotal = boxPrice + currentDeliveryPrice + totalAddonsPrice;
-
-      // Montagem da Mensagem
-      var message = "Olá! Gostaria de fazer o pedido da cesta:\n";
-      message += "🎁 *Cesta:* " + selectedBoxName + " — " + formatCurrency(boxPrice) + "\n\n";
-
-      message += "📍 *Forma de Recebimento:*\n";
-      if (isDelivery) {
-        message += "- Entrega em Caicó (de carro): " + formatCurrency(deliveryFee) + "\n\n";
-      } else {
-        message += "- Retirada no local (Sem taxa)\n\n";
-      }
-
-      message += "✨ *Adicionais:*\n";
-      if (selectedAddonsText.length > 0) {
-        message += "- " + selectedAddonsText.join("\n- ") + "\n\n";
-      } else {
-        message += "- Nenhum adicional selecionado\n\n";
-      }
-
-      message += "💰 *VALOR TOTAL DO PEDIDO: " + formatCurrency(grandTotal) + "*";
-
-      var whatsappUrl = "https://wa.me/5584996317328?text=" + encodeURIComponent(message);
-      window.open(whatsappUrl, '_blank');
-      closeModal('modal-adicionais');
-    }
-
-    async function shareButton(shareData, modalId) {
-
-      if (navigator.share) {
-        try {
-          const newUrl = new URL(shareData.url);
-          if (modalId) {
-            newUrl.searchParams.set('modal-id', modalId);
-          }
-          shareData.url = newUrl.toString();
-          await navigator.share(shareData);
-        } catch (error) {
-          if (error.name !== "AbortError") {
-            console.error("Erro ao compartilhar:", error);
-          }
-        }
-      } else {
-        // Fallback para navegadores sem suporte à Web Share API
-        try {
-          await navigator.clipboard.writeText(shareData.url);
-          document.getElementById('share-button').textContent = "Link copiado!";
-        } catch (error) {
-          console.error("Erro ao copiar o link:", error);
-        }
-      }
-    }
-
-    window.onclick = function (event) {
-      if (event.target.classList.contains('modal-backdrop')) {
-        event.target.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    }
-    // listeners da página
-    document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const modalId = params.get("modal-id");
-
-      if (modalId) {
-        console.log("Modal ID from URL:", modalId);
-        openModal(modalId);
-      }
-    });
-
-  </script>
-
-</body>
-
-</html>
+                  <circle cx="18" cy
